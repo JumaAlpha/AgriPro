@@ -188,6 +188,60 @@
         </div>
     </section>
 
+<div class="relative" style="margin-top: -1px; background: transparent;">
+    <svg class="w-full h-26 sm:h-34" viewBox="0 0 1200 120" preserveAspectRatio="none" style="display: block;">
+        <defs>
+            <mask id="waterFlowWave">
+                <rect width="1200" height="120" fill="black"/>
+                <!-- Natural water flow shape -->
+                <path d="M0,70 
+                         C80,50 160,90 240,60 
+                         C320,30 400,80 480,50 
+                         C560,20 640,70 720,40 
+                         C800,10 880,60 960,30 
+                         C1040,0 1120,50 1200,20 
+                         L1200,120 L0,120 Z" 
+                      fill="white"/>
+                <!-- Water bubble clusters -->
+                <g fill="black">
+                    <!-- Cluster 1 -->
+                    <circle cx="80" cy="55" r="12"/>
+                    <circle cx="95" cy="65" r="8"/>
+                    <circle cx="65" cy="70" r="6"/>
+                    <!-- Cluster 2 -->
+                    <circle cx="240" cy="40" r="14"/>
+                    <circle cx="260" cy="50" r="9"/>
+                    <circle cx="220" cy="55" r="7"/>
+                    <!-- Cluster 3 -->
+                    <circle cx="400" cy="65" r="11"/>
+                    <circle cx="420" cy="75" r="6"/>
+                    <circle cx="380" cy="70" r="8"/>
+                    <!-- Cluster 4 -->
+                    <circle cx="560" cy="35" r="13"/>
+                    <circle cx="580" cy="45" r="7"/>
+                    <circle cx="540" cy="50" r="9"/>
+                    <!-- Cluster 5 -->
+                    <circle cx="720" cy="60" r="10"/>
+                    <circle cx="740" cy="70" r="5"/>
+                    <circle cx="700" cy="65" r="7"/>
+                    <!-- Cluster 6 -->
+                    <circle cx="880" cy="25" r="15"/>
+                    <circle cx="900" cy="35" r="8"/>
+                    <circle cx="860" cy="40" r="6"/>
+                    <!-- Cluster 7 -->
+                    <circle cx="1040" cy="45" r="12"/>
+                    <circle cx="1060" cy="55" r="7"/>
+                    <circle cx="1020" cy="60" r="5"/>
+                    <!-- Cluster 8 -->
+                    <circle cx="1160" cy="30" r="9"/>
+                    <circle cx="1180" cy="40" r="4"/>
+                </g>
+            </mask>
+        </defs>
+        <rect width="1200" height="120" fill="#f0f7e6" mask="url(#waterFlowWave)"/>
+    </svg>
+</div>
+
     <!-- Impact Stats -->
     <section class="py-16 bg-light relative overflow-hidden">
         <!-- Background pattern -->
