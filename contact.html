@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.67">
+    <title>Contact Us - Agri-Pro Solutions CBO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2d5016',
+                        secondary: '#4a7c2a',
+                        accent: '#7cb342',
+                        light: '#f0f7e6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-hero {
+            background: linear-gradient(rgba(45, 80, 22, 0.85), rgba(45, 80, 22, 0.75)), url('https://images.unsplash.com/photo-1559021824-2cbc358dee0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(124, 179, 66, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+        }
+        
+        .contact-card {
+            transition: all 0.4s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-input:focus {
+            border-color: #7cb342;
+            box-shadow: 0 0 0 3px rgba(124, 179, 66, 0.1);
+        }
+        
+        .map-container {
+            background: linear-gradient(45deg, #f0f7e6, #e8f5e8);
+            border: 2px dashed #7cb342;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a7c2a;
+            font-weight: 500;
+        }
+        
+        .success-message {
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
+                    <a href="programs.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
+                    <a href="impact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
+                    <a href="get-involved.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get Involved</a>
+                    <a href="contact.html" class="text-primary font-medium">Contact</a>
+                    <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                        Partner With Us
+                    </button>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-primary">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-primary">About</a>
+                <a href="programs.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Programs</a>
+                <a href="impact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Impact</a>
+                <a href="get-involved.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Get Involved</a>
+                <a href="contact.html" class="block px-3 py-2 text-primary font-medium">Contact</a>
+                <button class="w-full mt-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary">
+                    Partner With Us
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-hero py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in">Get In Touch</h1>
+                <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
+                    We'd love to hear from you. Reach out to discuss partnerships, ask questions, or learn more about our work.
+                </p>
+                <div class="fade-in" style="transition-delay: 0.4s;">
+                    <a href="#contact-form" class="bg-accent text-primary px-6 py-3 rounded-lg font-semibold hover:bg-white transition-all duration-300 transform hover:scale-105 inline-block">
+                        Send us a Message
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Contact Information</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Multiple ways to reach our team in Rachuonyo North, Kenya
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Location -->
+                <div class="contact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
+                        <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Our Location</h3>
+                    <p class="text-gray-600 mb-4">
+                        Agri-Pro Solutions CBO<br>
+                        Rachuonyo North Sub-County<br>
+                        Homa Bay County, Kenya
+                    </p>
+                    <p class="text-sm text-gray-500">
+                        Serving all 7 wards across the sub-county
+                    </p>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="contact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.1s;">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
+                        <i class="fas fa-phone-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Contact Details</h3>
+                    <div class="space-y-3 text-gray-600">
+                        <p class="flex items-center justify-center">
+                            <i class="fas fa-phone mr-3 text-accent"></i>
+                            +254 715 581924
+                        </p>
+                        <p class="flex items-center justify-center">
+                            <i class="fas fa-envelope mr-3 text-accent"></i>
+                            info@agriprosolutions.org
+                        </p>
+                        <p class="flex items-center justify-center">
+                            <i class="fas fa-clock mr-3 text-accent"></i>
+                            Mon - Fri: 8:00 AM - 5:00 PM
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Key Contacts -->
+                <div class="contact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Key Contacts</h3>
+                    <div class="space-y-3 text-gray-600">
+                        <p>
+                            <span class="font-semibold">Mr. Ben Blasto Nyagol</span><br>
+                            Chairman
+                        </p>
+                        <p>
+                            <span class="font-semibold">Elimu Wasonga Odhiambo</span><br>
+                            Secretary
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            Available for meetings and consultations
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Map -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg fade-in">
+                <h3 class="text-2xl font-bold text-primary mb-6 text-center">Our Location in Rachuonyo North</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-gray-600 mb-6">
+                            Agri-Pro Solutions operates across all seven wards of Rachuonyo North Sub-County, with our main office serving as the central hub for our community programs and demonstrations.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-2">Main Office & Demo Plots</h4>
+                                    <p class="text-gray-600">Central location featuring BSF production, aquaculture demonstrations, and training facilities</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-2">Kendu Bay Showground</h4>
+                                    <p class="text-gray-600">Aquaculture department with Tilapia and Catfish ponds</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-2">Field Operations</h4>
+                                    <p class="text-gray-600">Active programs across Kibiri, Kadel, and Kendu Town wards</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-container rounded-lg h-80">
+                        <div class="text-center">
+                            <i class="fas fa-map-marked-alt text-4xl mb-4"></i>
+                            <p class="text-lg font-semibold">Rachuonyo North Map</p>
+                            <p class="text-sm mt-2">Homa Bay County, Kenya</p>
+                            <p class="text-xs mt-4 text-gray-600">Interactive map showing our locations<br>across the sub-county</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact-form" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div class="fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Send Us a Message</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Have questions about our programs? Interested in partnership opportunities? Want to visit our demonstration plots? We're here to help.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                <i class="fas fa-clock text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Response Time</h4>
+                                <p class="text-gray-600">We typically respond within 24-48 hours during business days</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                <i class="fas fa-users text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Site Visits</h4>
+                                <p class="text-gray-600">We welcome visitors to our demonstration plots and training facilities with prior arrangement</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                <i class="fas fa-handshake text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Partnership Meetings</h4>
+                                <p class="text-gray-600">Available for in-person or virtual meetings to discuss collaboration opportunities</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-light rounded-lg border-l-4 border-primary">
+                        <h4 class="font-semibold text-primary mb-2">Before Your Visit:</h4>
+                        <ul class="text-gray-600 space-y-1 text-sm">
+                            <li>• Please schedule appointments in advance</li>
+                            <li>• Bring appropriate footwear for farm visits</li>
+                            <li>• Let us know if you have specific interests (BSF, aquaculture, etc.)</li>
+                            <li>• Consider the weather - we're in a rural agricultural area</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="fade-in" style="transition-delay: 0.3s;">
+                    <div class="bg-light rounded-2xl p-8 shadow-lg">
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 mb-2">First Name *</label>
+                                    <input type="text" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Last Name *</label>
+                                    <input type="text" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent" placeholder="+254 XXX XXX XXX">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2">Organization</label>
+                                <input type="text" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2">Inquiry Type *</label>
+                                <select required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <option value="">Select an option</option>
+                                    <option>Partnership Opportunity</option>
+                                    <option>Program Information</option>
+                                    <option>Site Visit Request</option>
+                                    <option>Volunteer Inquiry</option>
+                                    <option>Donation Question</option>
+                                    <option>Technical Assistance</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2">Specific Interest</label>
+                                <select class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <option value="">Select area of interest</option>
+                                    <option>Agro-ecology & Farming</option>
+                                    <option>Aquaculture (Fish Farming)</option>
+                                    <option>Black Soldier Fly Production</option>
+                                    <option>Clean Energy Solutions</option>
+                                    <option>Youth Empowerment</option>
+                                    <option>Market Access & Aggregation</option>
+                                    <option>Irrigation Technology</option>
+                                    <option>All Programs</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2">Message *</label>
+                                <textarea rows="5" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent" placeholder="Please share details about your inquiry..."></textarea>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <input type="checkbox" id="newsletter" class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent">
+                                <label for="newsletter" class="ml-2 text-gray-700 text-sm">
+                                    Subscribe to our newsletter for updates on our programs and impact
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary text-white py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                                Send Message
+                            </button>
+                        </form>
+                        
+                        <!-- Success Message -->
+                        <div id="successMessage" class="success-message mt-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                <div>
+                                    <p class="font-semibold">Message Sent Successfully!</p>
+                                    <p class="text-sm">Thank you for contacting us. We'll get back to you within 24-48 hours.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Our Projects -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Visit Our Projects</h2>
+                <p class="text-xl text-light max-w-3xl mx-auto">
+                    See our work in action across Rachuonyo North Sub-County
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center fade-in">
+                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-seedling text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Demo Plots</h3>
+                    <p class="text-light text-sm">Watermelon, kales, and agroforestry demonstrations</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center fade-in" style="transition-delay: 0.1s;">
+                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-fish text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Aquaculture</h3>
+                    <p class="text-light text-sm">Tilapia and catfish ponds at Kendu Bay showground</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center fade-in" style="transition-delay: 0.2s;">
+                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-recycle text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">BSF Production</h3>
+                    <p class="text-light text-sm">Waste to wealth innovation at our office compound</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center fade-in" style="transition-delay: 0.3s;">
+                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tint text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Irrigation</h3>
+                    <p class="text-light text-sm">Money-Maker pump demonstrations and training</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in" style="transition-delay: 0.4s;">
+                <a href="#contact-form" class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 inline-block">
+                    Schedule a Visit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-light">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600">Quick answers to common questions about our work</p>
+            </div>
+
+            <div class="space-y-6 fade-in">
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h3 class="text-lg font-semibold text-primary mb-3">How can I partner with Agri-Pro Solutions?</h3>
+                    <p class="text-gray-600">We welcome partnerships with organizations, institutions, and corporations. You can support through funding, technical assistance, equipment donation, or program collaboration. Use the partnership form on our Get Involved page or contact us directly.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-lg fade-in" style="transition-delay: 0.1s;">
+                    <h3 class="text-lg font-semibold text-primary mb-3">Can I visit your demonstration plots?</h3>
+                    <p class="text-gray-600">Yes! We welcome visitors to our demonstration plots, aquaculture sites, and BSF production unit. Please schedule your visit in advance using the contact form so we can arrange for a guide and ensure someone is available to show you around.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-lg fade-in" style="transition-delay: 0.2s;">
+                    <h3 class="text-lg font-semibold text-primary mb-3">Do you offer training for farmers?</h3>
+                    <p class="text-gray-600">Yes, we provide comprehensive training in agro-ecology, aquaculture, BSF production, and irrigation technology. We've trained over 2,500 farmers and 300 youth. Contact us to learn about upcoming training sessions or to arrange group training.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-lg fade-in" style="transition-delay: 0.3s;">
+                    <h3 class="text-lg font-semibold text-primary mb-3">How can local youth get involved?</h3>
+                    <p class="text-gray-600">Youth can participate in our training programs, start agribusinesses with our support, join our youth empowerment programs, or volunteer. We specifically focus on creating opportunities for young people in sustainable agriculture and green entrepreneurship.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in" style="transition-delay: 0.4s;">
+                <p class="text-gray-600 mb-4">Have more questions?</p>
+                <a href="#contact-form" class="text-primary font-semibold hover:text-secondary transition-colors duration-300">
+                    Ask us anything →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through agro-ecology, clean energy, and youth empowerment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Our Programs</a></li>
+                        <li><a href="impact.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Our Impact</a></li>
+                        <li><a href="get-involved.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Get Involved</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-accent"></i>
+                            Rachuonyo North, Kenya
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-accent"></i>
+                            +254 715 581924
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent"></i>
+                            info@agriprosolutions.org
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Agri-Pro Solutions Community Based Organization. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        });
+
+        // Initialize GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Fade in animation for elements with class 'fade-in'
+        gsap.utils.toArray('.fade-in').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 50 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/95', 'backdrop-blur-md');
+                nav.classList.remove('bg-white/90');
+            } else {
+                nav.classList.remove('bg-white/95');
+                nav.classList.add('bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.67">
+    <title>Our Impact - Agri-Pro Solutions CBO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2d5016',
+                        secondary: '#4a7c2a',
+                        accent: '#7cb342',
+                        light: '#f0f7e6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-hero {
+            background: linear-gradient(rgba(45, 80, 22, 0.85), rgba(45, 80, 22, 0.75)), url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(124, 179, 66, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+        }
+        
+        .impact-card {
+            transition: all 0.4s ease;
+        }
+        
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #2d5016, #4a7c2a);
+            height: 8px;
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(45deg, #f0f7e6, #e8f5e8);
+            border: 2px dashed #7cb342;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a7c2a;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
+                    <a href="programs.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
+                    <a href="impact.html" class="text-primary font-medium">Impact</a>
+                    <a href="get-involved.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get Involved</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
+                    <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                        Partner With Us
+                    </button>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-primary">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-primary">About</a>
+                <a href="programs.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Programs</a>
+                <a href="impact.html" class="block px-3 py-2 text-primary font-medium">Impact</a>
+                <a href="get-involved.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Get Involved</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Contact</a>
+                <button class="w-full mt-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary">
+                    Partner With Us
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-hero py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in">Our Impact & Achievements</h1>
+                <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
+                    Measuring our progress in transforming rural livelihoods and building climate resilience across Rachuonyo North
+                </p>
+                <div class="fade-in" style="transition-delay: 0.4s;">
+                    <a href="#impact-stats" class="bg-accent text-primary px-6 py-3 rounded-lg font-semibold hover:bg-white transition-all duration-300 transform hover:scale-105 inline-block">
+                        View Our Results
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Impact Statistics -->
+    <section id="impact-stats" class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Transforming Lives in Numbers</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our measurable impact across all seven wards of Rachuonyo North Sub-County
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in">
+                    <div class="text-5xl font-bold text-primary mb-4 counter" data-target="2500">0</div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Farmers Trained</h3>
+                    <p class="text-gray-600">In agro-ecological practices and climate-resilient farming</p>
+                </div>
+                
+                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.1s;">
+                    <div class="text-5xl font-bold text-primary mb-4 counter" data-target="30000">0</div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Tree Seedlings</h3>
+                    <p class="text-gray-600">Distributed for agroforestry and environmental conservation</p>
+                </div>
+                
+                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.2s;">
+                    <div class="text-5xl font-bold text-primary mb-4 counter" data-target="300">0</div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Youth Empowered</h3>
+                    <p class="text-gray-600">With skills in sustainable agriculture and entrepreneurship</p>
+                </div>
+                
+                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.3s;">
+                    <div class="text-5xl font-bold text-primary mb-4 counter" data-target="4400">0</div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Kilograms Aggregated</h3>
+                    <p class="text-gray-600">Of farm produce creating better market access for farmers</p>
+                </div>
+            </div>
+
+            <!-- Progress Towards Goals -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg fade-in">
+                <h3 class="text-2xl font-bold text-primary mb-8 text-center">Progress Towards Our 2025 Goals</h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-gray-700">Farmers Reached</span>
+                            <span class="font-semibold text-primary">25%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="progress-bar h-3 rounded-full" style="width: 25%"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">2,500 of 10,000 target farmers engaged</p>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-gray-700">Youth Enterprises</span>
+                            <span class="font-semibold text-primary">30%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="progress-bar h-3 rounded-full" style="width: 30%"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">300 of 1,000 target youth-led businesses supported</p>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-gray-700">Clean Energy Adoption</span>
+                            <span class="font-semibold text-primary">6%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="progress-bar h-3 rounded-full" style="width: 6%"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">300 of 5,000 target households using clean energy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact by Program Area -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Impact by Program Area</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Detailed results across our integrated approach to rural transformation
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Agro-ecology Impact -->
+                <div class="impact-card bg-light rounded-2xl p-8 fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-seedling text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary">Agro-ecology Impact</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Agro-ecological Service Providers</span>
+                            <span class="text-primary font-bold text-xl">40</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Farmers Using Composting</span>
+                            <span class="text-primary font-bold text-xl">1,800+</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Acres Under Agroforestry</span>
+                            <span class="text-primary font-bold text-xl">450+</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-primary/10 rounded-lg">
+                        <p class="text-primary font-semibold">"Soil organic matter increased by 35% in demonstration farms"</p>
+                    </div>
+                </div>
+
+                <!-- Economic Impact -->
+                <div class="impact-card bg-light rounded-2xl p-8 fade-in" style="transition-delay: 0.2s;">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary">Economic Impact</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Produce Aggregated (2024)</span>
+                            <span class="text-primary font-bold text-xl">4.4 Tons</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Average Income Increase</span>
+                            <span class="text-primary font-bold text-xl">42%</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Youth Businesses Created</span>
+                            <span class="text-primary font-bold text-xl">45</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-primary/10 rounded-lg">
+                        <p class="text-primary font-semibold">"Farmers received 15-20% higher prices through collective marketing"</p>
+                    </div>
+                </div>
+
+                <!-- Environmental Impact -->
+                <div class="impact-card bg-light rounded-2xl p-8 fade-in" style="transition-delay: 0.4s;">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-leaf text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary">Environmental Impact</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Carbon Sequestration</span>
+                            <span class="text-primary font-bold text-xl">180T CO₂/yr</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Firewood Saved</span>
+                            <span class="text-primary font-bold text-xl">65%</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Water Conservation</span>
+                            <span class="text-primary font-bold text-xl">40%</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-primary/10 rounded-lg">
+                        <p class="text-primary font-semibold">"Reduced soil erosion by 60% in participating farms"</p>
+                    </div>
+                </div>
+
+                <!-- Social Impact -->
+                <div class="impact-card bg-light rounded-2xl p-8 fade-in" style="transition-delay: 0.6s;">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary">Social Impact</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Women Participation</span>
+                            <span class="text-primary font-bold text-xl">58%</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Youth Employment</span>
+                            <span class="text-primary font-bold text-xl">120+</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-semibold">Communities Reached</span>
+                            <span class="text-primary font-bold text-xl">7 Wards</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-primary/10 rounded-lg">
+                        <p class="text-primary font-semibold">"85% of participants report improved food security"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
+                <p class="text-xl text-light max-w-3xl mx-auto">
+                    Real stories of transformation from the communities we serve
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 fade-in">
+                    <div class="image-placeholder w-full h-48 rounded-lg mb-6">
+                        <div class="text-center text-white">
+                            <i class="fas fa-user text-3xl mb-2"></i>
+                            <p>Youth Agri-preneur<br>Success Story</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">From Unemployment to Agri-business Owner</h3>
+                    <p class="text-light mb-4">"After training in BSF production, I started my own animal feed enterprise. I now employ 3 other youth and supply feed to 15 local farmers."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold mr-3">
+                            JK
+                        </div>
+                        <div>
+                            <p class="font-semibold">John Kiprotich</p>
+                            <p class="text-light text-sm">Youth Entrepreneur, Kendu Bay</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 fade-in" style="transition-delay: 0.2s;">
+                    <div class="image-placeholder w-full h-48 rounded-lg mb-6">
+                        <div class="text-center text-white">
+                            <i class="fas fa-female text-3xl mb-2"></i>
+                            <p>Women Farmer<br>Success Story</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Tripling Income Through Irrigation</h3>
+                    <p class="text-light mb-4">"The Money-Maker pump transformed my farming. I now grow vegetables year-round and my income has increased from KES 15,000 to KES 45,000 per season."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold mr-3">
+                            MN
+                        </div>
+                        <div>
+                            <p class="font-semibold">Mary Nyong'o</p>
+                            <p class="text-light text-sm">Smallholder Farmer, Kibiri Ward</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 fade-in" style="transition-delay: 0.4s;">
+                    <div class="image-placeholder w-full h-48 rounded-lg mb-6">
+                        <div class="text-center text-white">
+                            <i class="fas fa-tree text-3xl mb-2"></i>
+                            <p>Environmental<br>Impact Story</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Restoring Degraded Land</h3>
+                    <p class="text-light mb-4">"Through agroforestry training, we've transformed our barren family land. The trees provide shade, improve soil, and give us additional income from fruits."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold mr-3">
+                            RO
+                        </div>
+                        <div>
+                            <p class="font-semibold">Robert Omondi</p>
+                            <p class="text-light text-sm">Community Leader, Kadel Ward</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnerships & Recognition -->
+    <section class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Partnerships & Recognition</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Working with strategic partners to amplify our impact
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div class="text-center p-6 fade-in">
+                    <div class="h-20 flex items-center justify-center bg-white rounded-xl shadow-md mb-4 mx-auto">
+                        <span class="text-gray-700 font-semibold text-lg">FAO</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Agro-ecology & Training</p>
+                </div>
+                <div class="text-center p-6 fade-in" style="transition-delay: 0.1s;">
+                    <div class="h-20 flex items-center justify-center bg-white rounded-xl shadow-md mb-4 mx-auto">
+                        <span class="text-gray-700 font-semibold text-lg">GIZ</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Clean Energy Solutions</p>
+                </div>
+                <div class="text-center p-6 fade-in" style="transition-delay: 0.2s;">
+                    <div class="h-20 flex items-center justify-center bg-white rounded-xl shadow-md mb-4 mx-auto">
+                        <span class="text-gray-700 font-semibold text-lg">KickStart</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Irrigation Technology</p>
+                </div>
+                <div class="text-center p-6 fade-in" style="transition-delay: 0.3s;">
+                    <div class="h-20 flex items-center justify-center bg-white rounded-xl shadow-md mb-4 mx-auto">
+                        <span class="text-gray-700 font-semibold text-lg">EU BOOST</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Strategic Funding Partner</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-lg fade-in">
+                <h3 class="text-2xl font-bold text-primary mb-6 text-center">EU BOOST Project Alignment</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-primary mb-4">Direct Contributions to EU Priorities:</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mr-3 mt-1"></i>
+                                <span>Climate Action & Biodiversity through agroforestry</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mr-3 mt-1"></i>
+                                <span>Green Energy Transition with clean cooking solutions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mr-3 mt-1"></i>
+                                <span>Youth Employment through agri-preneurship training</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mr-3 mt-1"></i>
+                                <span>Food Security through resilient farming systems</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="image-placeholder h-48 rounded-lg">
+                        <div class="text-center">
+                            <i class="fas fa-handshake text-4xl mb-2 text-primary"></i>
+                            <p class="text-primary font-semibold">EU Delegation Visit<br>with Mr. Tito Arunga</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Goals -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Future Goals</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Scaling our impact to reach more communities across Kenya
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-8 fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Scale Reach</h3>
+                    <p class="text-gray-600">Expand to 10,000+ farmers with agro-ecology and irrigation solutions across multiple counties</p>
+                </div>
+
+                <div class="text-center p-8 fade-in" style="transition-delay: 0.2s;">
+                    <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-industry text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Enterprise Growth</h3>
+                    <p class="text-gray-600">Establish 1,000 youth-led agribusinesses in green and digital farming technologies</p>
+                </div>
+
+                <div class="text-center p-8 fade-in" style="transition-delay: 0.4s;">
+                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-bolt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Energy Access</h3>
+                    <p class="text-gray-600">Enable 50,000+ households to adopt clean energy solutions for cooking and farming</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in" style="transition-delay: 0.6s;">
+                <a href="get-involved.html" class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 inline-block">
+                    Help Us Achieve These Goals
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through agro-ecology, clean energy, and youth empowerment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Our Work</h3>
+                    <ul class="space-y-2">
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Programs</a></li>
+                        <li><a href="impact.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Impact</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Gallery</a></li>
+                        <li><a href="get-involved.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Get Involved</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-accent"></i>
+                            Rachuonyo North, Kenya
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-accent"></i>
+                            +254 XXX XXX XXX
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent"></i>
+                            info@agriprosolutions.org
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Agri-Pro Solutions Community Based Organization. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
+                };
+                
+                ScrollTrigger.create({
+                    trigger: counter,
+                    start: "top 80%",
+                    onEnter: updateCounter,
+                    once: true
+                });
+            });
+        }
+
+        // Initialize GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Fade in animation for elements with class 'fade-in'
+        gsap.utils.toArray('.fade-in').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 50 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            animateCounters();
+            
+            // Navbar background on scroll
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-white/95', 'backdrop-blur-md');
+                    nav.classList.remove('bg-white/90');
+                } else {
+                    nav.classList.remove('bg-white/95');
+                    nav.classList.add('bg-white/90');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

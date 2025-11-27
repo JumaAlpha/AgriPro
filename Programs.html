@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.67">
+    <title>Our Programs - Agri-Pro Solutions CBO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2d5016',
+                        secondary: '#4a7c2a',
+                        accent: '#7cb342',
+                        light: '#f0f7e6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-hero {
+            background: linear-gradient(rgba(45, 80, 22, 0.85), rgba(45, 80, 22, 0.75)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .program-card {
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(124, 179, 66, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-button.active {
+            background: #2d5016;
+            color: white;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(45deg, #f0f7e6, #e8f5e8);
+            border: 2px dashed #7cb342;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a7c2a;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
+                    <a href="programs.html" class="text-primary font-medium">Programs</a>
+                    <a href="impact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
+                    <a href="get-involved.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get Involved</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
+                    <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                        Partner With Us
+                    </button>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-primary">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-primary">About</a>
+                <a href="programs.html" class="block px-3 py-2 text-primary font-medium">Programs</a>
+                <a href="impact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Impact</a>
+                <a href="get-involved.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Get Involved</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Contact</a>
+                <button class="w-full mt-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary">
+                    Partner With Us
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-hero py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in">Our Programs</h1>
+                <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
+                    Integrated solutions addressing climate vulnerability, economic pressures, and social challenges in Rachuonyo North
+                </p>
+                <div class="fade-in" style="transition-delay: 0.4s;">
+                    <a href="#programs" class="bg-accent text-primary px-6 py-3 rounded-lg font-semibold hover:bg-white transition-all duration-300 transform hover:scale-105 inline-block">
+                        Explore Our Programs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Overview -->
+    <section id="programs" class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Integrated Approach</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We address the interconnected challenges of climate change, food security, and youth unemployment through eight complementary programs
+                </p>
+            </div>
+
+            <!-- Program Tabs -->
+            <div class="mb-12 fade-in">
+                <div class="flex overflow-x-auto pb-4 space-x-2">
+                    <button class="tab-button flex-shrink-0 bg-white px-6 py-3 rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300 active" data-tab="agroecology">
+                        <i class="fas fa-seedling mr-2"></i>Agro-ecology
+                    </button>
+                    <button class="tab-button flex-shrink-0 bg-white px-6 py-3 rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300" data-tab="aquaculture">
+                        <i class="fas fa-fish mr-2"></i>Aquaculture
+                    </button>
+                    <button class="tab-button flex-shrink-0 bg-white px-6 py-3 rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300" data-tab="waste-to-wealth">
+                        <i class="fas fa-recycle mr-2"></i>Waste to Wealth
+                    </button>
+                    <button class="tab-button flex-shrink-0 bg-white px-6 py-3 rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300" data-tab="irrigation">
+                        <i class="fas fa-tint mr-2"></i>Irrigation
+                    </button>
+                    <button class="tab-button flex-shrink-0 bg-white px-6 py-3 rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300" data-tab="demo-plots">
+                        <i class="fas fa-tractor mr-2"></i>Demo Plots
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="fade-in">
+                <!-- Agro-ecology -->
+                <div id="agroecology" class="tab-content active">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-primary mb-6">Agro-ecology & Climate-Resilient Farming</h3>
+                            <p class="text-lg text-gray-600 mb-6">
+                                Building farmer resilience through sustainable practices that work with nature rather than against it.
+                            </p>
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">Key Achievements</h4>
+                                        <ul class="text-gray-600 mt-2 space-y-2">
+                                            <li>Trained <span class="font-semibold">40 Agro-ecological Service Providers (ASPs)</span> as trainers of farmers</li>
+                                            <li><span class="font-semibold">2,500+ smallholder farmers</span> trained in sustainable practices</li>
+                                            <li><span class="font-semibold">30,000+ tree seedlings</span> distributed for soil health and income</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">Practices Taught</h4>
+                                        <ul class="text-gray-600 mt-2">
+                                            <li>Soil fertility management (composting, mulching)</li>
+                                            <li>Crop diversification & indigenous seeds</li>
+                                            <li>Integrated pest management</li>
+                                            <li>Agroforestry & water conservation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-primary/10 p-4 rounded-lg border-l-4 border-primary">
+                                <p class="text-primary font-semibold">EU Value Proposition: Scaling proven, environmentally sustainable agricultural practices</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="image-placeholder w-full h-64 rounded-lg mb-4">
+                                    <div class="text-center">
+                                        <i class="fas fa-seedling text-4xl mb-2"></i>
+                                        <p>Distributing agroforestry seedlings<br>to farmers in Kendu Town ward</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 text-sm italic">Farmers receiving agroforestry tree seedlings from the Hub</p>
+                            </div>
+                            <div class="absolute -top-4 -right-4 w-8 h-8 bg-accent rounded-full floating"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aquaculture -->
+                <div id="aquaculture" class="tab-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-primary mb-6">Aquaculture Department</h3>
+                            <p class="text-lg text-gray-600 mb-6">
+                                Sustainable fish farming providing protein-rich food and income opportunities for the community.
+                            </p>
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">Fish Species</h4>
+                                        <ul class="text-gray-600 mt-2 space-y-2">
+                                            <li><span class="font-semibold">Tilapia</span> - Fast-growing, popular species</li>
+                                            <li><span class="font-semibold">Catfish</span> - Hardy species suitable for local conditions</li>
+                                            <li>Both species raised at Kendu Bay showground</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">Benefits</h4>
+                                        <ul class="text-gray-600 mt-2">
+                                            <li>Diversified protein sources for local communities</li>
+                                            <li>Income generation through fish sales</li>
+                                            <li>Youth employment in aquaculture</li>
+                                            <li>Sustainable water resource utilization</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-primary/10 p-4 rounded-lg border-l-4 border-primary">
+                                <p class="text-primary font-semibold">Creating sustainable protein sources and economic opportunities through modern aquaculture practices</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white rounded-2xl p-4 shadow-lg">
+                                    <div class="image-placeholder w-full h-40 rounded-lg mb-2">
+                                        <div class="text-center">
+                                            <i class="fas fa-fish text-2xl mb-1"></i>
+                                            <p class="text-sm">Tilapia Fish Pond<br>Kendu Bay Showground</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl p-4 shadow-lg">
+                                    <div class="image-placeholder w-full h-40 rounded-lg mb-2">
+                                        <div class="text-center">
+                                            <i class="fas fa-fish text-2xl mb-1"></i>
+                                            <p class="text-sm">Cat Fish Pond<br>Kendu Bay Showground</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary rounded-full floating"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Waste to Wealth -->
+                <div id="waste-to-wealth" class="tab-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-primary mb-6">Waste to Wealth: Black Soldier Fly Innovation</h3>
+                            <p class="text-lg text-gray-600 mb-6">
+                                Transforming organic waste into high-value animal feed through innovative Black Soldier Fly (BSF) production.
+                            </p>
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">Current Impact</h4>
+                                        <ul class="text-gray-600 mt-2 space-y-2">
+                                            <li><span class="font-semibold">100+ farmers and youth</span> trained in BSF production</li>
+                                            <li>Developing a <span class="font-semibold">BSF-Based Feed Formulation Center</span></li>
+                                            <li>Creating youth-led enterprises in circular economy</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">Future Goals</h4>
+                                        <ul class="text-gray-600 mt-2">
+                                            <li>Produce affordable, sustainable animal feed</li>
+                                            <li>Scale circular economy model across the region</li>
+                                            <li>Create additional income streams for youth</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-primary/10 p-4 rounded-lg border-l-4 border-primary">
+                                <p class="text-primary font-semibold">EU Value Proposition: Investing in innovative, circular economy solutions that reduce environmental impact and create green jobs</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="image-placeholder w-full h-64 rounded-lg mb-4">
+                                    <div class="text-center">
+                                        <i class="fas fa-recycle text-4xl mb-2"></i>
+                                        <p>BSF Production Unit<br>at the office compound</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 text-sm italic">Hub Members practicing Black soldier fly production on their demo farm</p>
+                            </div>
+                            <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary rounded-full floating"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Irrigation -->
+                <div id="irrigation" class="tab-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-primary mb-6">Irrigation & Food Security for Economic Resilience</h3>
+                            <p class="text-lg text-gray-600 mb-6">
+                                Enabling farming beyond rainfall patterns for year-round food production and income generation.
+                            </p>
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">Partnership with KickStart International</h4>
+                                        <ul class="text-gray-600 mt-2 space-y-2">
+                                            <li>Distributed <span class="font-semibold">80+ Money-Maker irrigation pumps</span> to farmers</li>
+                                            <li>Enabled dry-season vegetable and fruit production</li>
+                                            <li>Significantly reduced crop failure rates</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">Results Achieved</h4>
+                                        <ul class="text-gray-600 mt-2">
+                                            <li>Diversified incomes for smallholder farmers</li>
+                                            <li>Improved year-round food security</li>
+                                            <li>Enhanced resilience to climate variability</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-primary/10 p-4 rounded-lg border-l-4 border-primary">
+                                <p class="text-primary font-semibold">EU Value Proposition: Building climate adaptation capabilities at the household level, directly mitigating the effects of drought</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="image-placeholder w-full h-64 rounded-lg mb-4">
+                                    <div class="text-center">
+                                        <i class="fas fa-tint text-4xl mb-2"></i>
+                                        <p>Training on Money Maker Pumps<br>by Kickstart International</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 text-sm italic">Farmers learning irrigation techniques for year-round production</p>
+                            </div>
+                            <div class="absolute -top-4 -right-4 w-8 h-8 bg-accent rounded-full floating"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demo Plots -->
+                <div id="demo-plots" class="tab-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-primary mb-6">Demonstration Plots & Hands-on Training</h3>
+                            <p class="text-lg text-gray-600 mb-6">
+                                Practical learning centers showcasing best practices in sustainable agriculture and providing hands-on training for farmers.
+                            </p>
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">Current Demo Plots</h4>
+                                        <ul class="text-gray-600 mt-2 space-y-2">
+                                            <li><span class="font-semibold">Watermelon Demo Plot</span> - High-value crop demonstration</li>
+                                            <li><span class="font-semibold">Kales Demo Plot</span> - Leafy vegetable production</li>
+                                            <li><span class="font-semibold">Agroforestry Plots</span> - Tree-crop integration</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">Training Activities</h4>
+                                        <ul class="text-gray-600 mt-2">
+                                            <li>On-farm farmer training sessions</li>
+                                            <li>Practical skills development</li>
+                                            <li>Technology demonstration</li>
+                                            <li>Best practice sharing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-primary/10 p-4 rounded-lg border-l-4 border-primary">
+                                <p class="text-primary font-semibold">Empowering farmers through practical, hands-on learning and demonstration of proven agricultural techniques</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white rounded-2xl p-4 shadow-lg">
+                                    <div class="image-placeholder w-full h-40 rounded-lg mb-2">
+                                        <div class="text-center">
+                                            <i class="fas fa-watermelon text-2xl mb-1"></i>
+                                            <p class="text-sm">Water Melon<br>Demo Plot</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl p-4 shadow-lg">
+                                    <div class="image-placeholder w-full h-40 rounded-lg mb-2">
+                                        <div class="text-center">
+                                            <i class="fas fa-leaf text-2xl mb-1"></i>
+                                            <p class="text-sm">Kales Demo Plot</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl p-4 shadow-lg">
+                                    <div class="image-placeholder w-full h-40 rounded-lg mb-2">
+                                        <div class="text-center">
+                                            <i class="fas fa-users text-2xl mb-1"></i>
+                                            <p class="text-sm">On-farm Training<br>at Demo Plots</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl p-4 shadow-lg">
+                                    <div class="image-placeholder w-full h-40 rounded-lg mb-2">
+                                        <div class="text-center">
+                                            <i class="fas fa-tree text-2xl mb-1"></i>
+                                            <p class="text-sm">Dr. Martha planting tree<br>at office compound</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute -top-4 -right-4 w-8 h-8 bg-accent rounded-full floating"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Preview Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Work in Action</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    See how we're transforming agriculture in Rachuonyo North through practical implementation
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-light rounded-xl p-6 shadow-md fade-in">
+                    <div class="image-placeholder w-full h-48 rounded-lg mb-4">
+                        <div class="text-center">
+                            <i class="fas fa-users text-3xl mb-2"></i>
+                            <p>EU Delegation Visit<br>with Mr. Tito Arunga</p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-primary mb-2">Partnership Engagement</h3>
+                    <p class="text-gray-600 text-sm">Meeting with EU delegation and Mr. Tito Arunga at our office premises</p>
+                </div>
+
+                <div class="bg-light rounded-xl p-6 shadow-md fade-in" style="transition-delay: 0.1s;">
+                    <div class="image-placeholder w-full h-48 rounded-lg mb-4">
+                        <div class="text-center">
+                            <i class="fas fa-tractor text-3xl mb-2"></i>
+                            <p>Planting Service<br>Kibiri Ward</p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-primary mb-2">Field Services</h3>
+                    <p class="text-gray-600 text-sm">Offering planting services to farmers in Kibiri Ward</p>
+                </div>
+
+                <div class="bg-light rounded-xl p-6 shadow-md fade-in" style="transition-delay: 0.2s;">
+                    <div class="image-placeholder w-full h-48 rounded-lg mb-4">
+                        <div class="text-center">
+                            <i class="fas fa-user-friends text-3xl mb-2"></i>
+                            <p>The Agri-Pro Team<br>at Office Compound</p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-primary mb-2">Our Team</h3>
+                    <p class="text-gray-600 text-sm">The dedicated Agri-Pro Solutions team working together</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in" style="transition-delay: 0.3s;">
+                <a href="gallery.html" class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 inline-block">
+                    View Full Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 fade-in">
+                Ready to Support Our Programs?
+            </h2>
+            <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
+                Join us in scaling our impact to reach 10,000+ farmers and create 1,000 youth-led agribusinesses across Kenya.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
+                <a href="get-involved.html" class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105">
+                    Partner With Us
+                </a>
+                <a href="contact.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
+                    Contact Our Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through agro-ecology, clean energy, and youth empowerment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Our Work</h3>
+                    <ul class="space-y-2">
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Agro-ecology</a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Aquaculture</a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Waste to Wealth</a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Demo Plots</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-accent"></i>
+                            Rachuonyo North, Kenya
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-accent"></i>
+                            +254 XXX XXX XXX
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent"></i>
+                            info@agriprosolutions.org
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Agri-Pro Solutions Community Based Organization. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Tab functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons and contents
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Initialize GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Fade in animation for elements with class 'fade-in'
+        gsap.utils.toArray('.fade-in').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 50 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/95', 'backdrop-blur-md');
+                nav.classList.remove('bg-white/90');
+            } else {
+                nav.classList.remove('bg-white/95');
+                nav.classList.add('bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>

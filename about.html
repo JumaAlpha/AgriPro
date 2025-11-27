@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Agri-Pro Solutions CBO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2d5016',
+                        secondary: '#4a7c2a',
+                        accent: '#7cb342',
+                        light: '#f0f7e6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-hero {
+            background: linear-gradient(rgba(45, 80, 22, 0.85), rgba(45, 80, 22, 0.75)), url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #7cb342;
+            border-radius: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% - 1rem);
+            background: #7cb342;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
+                    <a href="about.html" class="text-primary font-medium">About</a>
+                    <a href="programs.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
+                    <a href="impact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
+                    <a href="get-involved.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get Involved</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
+                    <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                        Partner With Us
+                    </button>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-primary">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-primary font-medium">About</a>
+                <a href="programs.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Programs</a>
+                <a href="impact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Impact</a>
+                <a href="get-involved.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Get Involved</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Contact</a>
+                <button class="w-full mt-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary">
+                    Partner With Us
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-hero py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in">About Agri-Pro Solutions</h1>
+                <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
+                    Building a model of hope in Rachuonyo North through agro-ecology, youth empowerment, and climate resilience.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Our Story</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        In Rachuonyo North, smallholder farmers face the daily realities of climate change: erratic rains, depleted soils, high energy costs, and shrinking opportunities for youth. Yet, from this challenge, <span class="text-primary font-semibold">Agri-Pro Solutions CBO has built a model of hope</span>—one that is restoring the land, empowering young people, and creating climate-smart livelihoods.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Led by committed youths drawn from across the sub-county under the chairmanship of <span class="text-primary font-semibold">Mr. Ben Blasto Nyagol</span>, our community-based organization places agro-ecology, farm produce aggregation & marketing, clean energy, and innovation at the heart of rural transformation.
+                    </p>
+                    <p class="text-lg text-gray-600">
+                        Today, our integrated approach is reaching <span class="text-primary font-semibold">all seven wards of the sub-county</span>, directly improving the lives of thousands of families through sustainable agricultural practices and community empowerment.
+                    </p>
+                </div>
+                <div class="relative fade-in" style="transition-delay: 0.3s;">
+                    <div class="bg-light rounded-2xl p-8 shadow-lg">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center p-4 bg-white rounded-lg shadow-md">
+                                <div class="text-3xl font-bold text-primary mb-2">7</div>
+                                <div class="text-gray-600">Wards Reached</div>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded-lg shadow-md">
+                                <div class="text-3xl font-bold text-primary mb-2">2,500+</div>
+                                <div class="text-gray-600">Farmers Trained</div>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded-lg shadow-md">
+                                <div class="text-3xl font-bold text-primary mb-2">300+</div>
+                                <div class="text-gray-600">Youth Empowered</div>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded-lg shadow-md">
+                                <div class="text-3xl font-bold text-primary mb-2">5</div>
+                                <div class="text-gray-600">Years of Impact</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating elements -->
+                    <div class="absolute -top-4 -right-4 w-8 h-8 bg-accent rounded-full floating"></div>
+                    <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary rounded-full floating" style="animation-delay: 1s;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Mission & Vision</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Guided by our core purpose and aspirations for the future
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg fade-in">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bullseye text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary mb-4">Our Mission</h3>
+                    <p class="text-gray-600 text-lg">
+                        To empower rural communities in Rachuonyo North through integrated agro-ecological practices, clean energy solutions, and youth entrepreneurship, building climate resilience and sustainable livelihoods while restoring environmental health.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg fade-in" style="transition-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-eye text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary mb-4">Our Vision</h3>
+                    <p class="text-gray-600 text-lg">
+                        A transformed Rachuonyo North where thriving rural communities practice climate-smart agriculture, youth are empowered as agri-preneurs, and sustainable ecosystems support prosperous livelihoods for generations to come.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Values</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    The principles that guide our work and define our approach
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center p-6 fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-leaf text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Sustainability</h3>
+                    <p class="text-gray-600">
+                        Commitment to environmental stewardship and long-term solutions that benefit both people and the planet.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 fade-in" style="transition-delay: 0.1s;">
+                    <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hands-helping text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Empowerment</h3>
+                    <p class="text-gray-600">
+                        Building capacity and creating opportunities for youth and farmers to become agents of change.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 fade-in" style="transition-delay: 0.2s;">
+                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-lightbulb text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Innovation</h3>
+                    <p class="text-gray-600">
+                        Embracing creative solutions and technologies to address complex agricultural and environmental challenges.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 fade-in" style="transition-delay: 0.3s;">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Community</h3>
+                    <p class="text-gray-600">
+                        Working collaboratively with local communities, respecting indigenous knowledge and fostering collective action.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Leadership</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Dedicated individuals driving our mission forward
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl p-8 shadow-lg fade-in">
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-user text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-2">Mr. Ben Blasto Nyagol</h3>
+                        <p class="text-secondary font-semibold mb-4">Chairman</p>
+                        <p class="text-gray-600">
+                            Leading Agri-Pro Solutions with vision and dedication, bringing together youth from across Rachuonyo North to drive sustainable agricultural transformation and community development.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg fade-in" style="transition-delay: 0.2s;">
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-user text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-2">Elimu Wasonga Odhiambo</h3>
+                        <p class="text-secondary font-semibold mb-4">Secretary</p>
+                        <p class="text-gray-600 mb-4">
+                            "Our work proves that climate-smart, agro-ecological farming is not only viable—it's transformational. We are restoring the land, empowering our youth, and building a future where rural innovation drives prosperity."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Model -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Partnership Model</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We don't work alone. Our success is built on leveraging the expertise and resources of diverse partners.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="text-center p-4 fade-in">
+                    <div class="h-16 flex items-center justify-center bg-light rounded-xl mb-4">
+                        <span class="text-gray-700 font-semibold">FAO</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Agro-ecology, Training, Agroforestry</p>
+                </div>
+                <div class="text-center p-4 fade-in" style="transition-delay: 0.1s;">
+                    <div class="h-16 flex items-center justify-center bg-light rounded-xl mb-4">
+                        <span class="text-gray-700 font-semibold">GIZ</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Clean Energy Solutions</p>
+                </div>
+                <div class="text-center p-4 fade-in" style="transition-delay: 0.2s;">
+                    <div class="h-16 flex items-center justify-center bg-light rounded-xl mb-4">
+                        <span class="text-gray-700 font-semibold">KickStart</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Irrigation Technology</p>
+                </div>
+                <div class="text-center p-4 fade-in" style="transition-delay: 0.3s;">
+                    <div class="h-16 flex items-center justify-center bg-light rounded-xl mb-4">
+                        <span class="text-gray-700 font-semibold">Equity Bank</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Mechanization Financing</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in" style="transition-delay: 0.4s;">
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+                    Through strategic collaborations with government agencies, international organizations, financial institutions, and community stakeholders, we amplify our impact and create sustainable change across Rachuonyo North.
+                </p>
+                <a href="get-involved.html" class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 inline-block">
+                    Become a Partner
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through agro-ecology, clean energy, and youth empowerment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Our Work</h3>
+                    <ul class="space-y-2">
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Agro-ecology</a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Clean Energy</a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Youth Empowerment</a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Market Access</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-accent"></i>
+                            Rachuonyo North, Kenya
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-accent"></i>
+                            +254 XXX XXX XXX
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent"></i>
+                            info@agriprosolutions.org
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Agri-Pro Solutions Community Based Organization. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Initialize GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Fade in animation for elements with class 'fade-in'
+        gsap.utils.toArray('.fade-in').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 50 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/95', 'backdrop-blur-md');
+                nav.classList.remove('bg-white/90');
+            } else {
+                nav.classList.remove('bg-white/95');
+                nav.classList.add('bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>

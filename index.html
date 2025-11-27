@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.67">
+    <title>Agri-Pro Solutions CBO - Empowering Rural Regeneration & Climate Resilience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2d5016',
+                        secondary: '#4a7c2a',
+                        accent: '#7cb342',
+                        light: '#f0f7e6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(45, 80, 22, 0.85), rgba(45, 80, 22, 0.75)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(124, 179, 66, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .program-card {
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #2d5016, #7cb342);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20">
+            <div class="flex items-center">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <div class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg pulse-glow">
+                        APS
+                    </div>
+                    <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
+                </a>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-primary hover:text-secondary font-medium transition-colors duration-300">Home</a>
+                <a href="about.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
+                <a href="programs.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
+                <a href="impact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
+                <a href="get-involved.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get Involved</a>
+                <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
+                <a href="get-involved.html#partnership" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-md">
+                    Partner With Us
+                </a>
+            </div>
+            
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-primary transition-transform duration-300 hover:scale-110">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t transition-all duration-300">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-primary font-medium transition-colors duration-300">Home</a>
+            <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">About</a>
+            <a href="programs.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Programs</a>
+            <a href="impact.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Impact</a>
+            <a href="get-involved.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Get Involved</a>
+            <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Contact</a>
+            <a href="get-involved.html#partnership" class="block w-full mt-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 text-center">
+                Partner With Us
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden">
+        <!-- Animated background elements -->
+        <div class="absolute top-10 left-10 w-20 h-20 bg-accent/20 rounded-full floating"></div>
+        <div class="absolute bottom-20 right-20 w-16 h-16 bg-secondary/30 rounded-full floating" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-12 h-12 bg-white/10 rounded-full floating" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 z-10">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight fade-in">
+                Empowering Rural Regeneration & 
+                <span class="text-accent">Climate Resilience</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-light fade-in" style="transition-delay: 0.2s;">
+                Transforming smallholder agriculture in Rachuonyo North, Kenya through agroecology, clean energy, and youth empowerment.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
+                <button class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Our Programs
+                </button>
+                <button class="glassmorphism border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
+                    See Our Impact
+                </button>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            <div class="flex flex-col items-center text-white/70">
+                <span class="text-sm mb-2">Scroll to explore</span>
+                <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="py-16 bg-light relative overflow-hidden">
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 left-0 w-72 h-72 bg-primary rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Impact in Rachuonyo North</h2>
+                <p class="text-xl text-gray-600">Reaching all seven wards with sustainable solutions</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in">
+                    <div class="text-4xl font-bold text-primary mb-2 counter" data-target="2500">0</div>
+                    <div class="text-gray-600">Farmers Trained in Agro-ecology</div>
+                </div>
+                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in" style="transition-delay: 0.1s;">
+                    <div class="text-4xl font-bold text-primary mb-2 counter" data-target="30000">0</div>
+                    <div class="text-gray-600">Tree Seedlings Distributed</div>
+                </div>
+                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in" style="transition-delay: 0.2s;">
+                    <div class="text-4xl font-bold text-primary mb-2 counter" data-target="300">0</div>
+                    <div class="text-gray-600">Youth Empowered</div>
+                </div>
+                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in" style="transition-delay: 0.3s;">
+                    <div class="text-4xl font-bold text-primary mb-2 counter" data-target="7">0</div>
+                    <div class="text-gray-600">Wards Reached</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Overview -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute -top-24 -right-24 w-48 h-48 bg-accent/10 rounded-full"></div>
+        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-primary/10 rounded-full"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Integrated Programs</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Holistic solutions addressing climate vulnerability, economic pressures, and social challenges
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Program 1 -->
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-primary shadow-md fade-in">
+                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-4 pulse-glow">
+                        <i class="fas fa-seedling text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3">Agro-ecology</h3>
+                    <p class="text-gray-600 text-sm">Climate-resilient farming, soil health, and agroforestry training</p>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-secondary shadow-md fade-in" style="transition-delay: 0.1s;">
+                    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mb-4 pulse-glow">
+                        <i class="fas fa-recycle text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3">Waste to Wealth</h3>
+                    <p class="text-gray-600 text-sm">Black Soldier Fly production for sustainable animal feed</p>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-accent shadow-md fade-in" style="transition-delay: 0.2s;">
+                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-4 pulse-glow">
+                        <i class="fas fa-tint text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3">Irrigation</h3>
+                    <p class="text-gray-600 text-sm">Money-Maker pumps for year-round production</p>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-primary shadow-md fade-in" style="transition-delay: 0.3s;">
+                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-4 pulse-glow">
+                        <i class="fas fa-bolt text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3">Clean Energy</h3>
+                    <p class="text-gray-600 text-sm">Improved cookstoves and energy-saving solutions</p>
+                </div>
+
+                <!-- Program 5 -->
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-secondary shadow-md fade-in" style="transition-delay: 0.4s;">
+                    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mb-4 pulse-glow">
+                        <i class="fas fa-truck-loading text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3">Market Access</h3>
+                    <p class="text-gray-600 text-sm">Produce aggregation and better price negotiation</p>
+                </div>
+
+                <!-- Program 6 -->
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-accent shadow-md fade-in" style="transition-delay: 0.5s;">
+                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-4 pulse-glow">
+                        <i class="fas fa-tractor text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3">Mechanization</h3>
+                    <p class="text-gray-600 text-sm">Tractor services and post-harvest machinery</p>
+                </div>
+
+                <!-- Program 7 -->
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-primary shadow-md fade-in" style="transition-delay: 0.6s;">
+                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-4 pulse-glow">
+                        <i class="fas fa-users text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3">Youth Empowerment</h3>
+                    <p class="text-gray-600 text-sm">Agri-preneurship and digital skills training</p>
+                </div>
+
+                <!-- Program 8 -->
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-secondary shadow-md fade-in" style="transition-delay: 0.7s;">
+                    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mb-4 pulse-glow">
+                        <i class="fas fa-handshake text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-primary mb-3">Partnerships</h3>
+                    <p class="text-gray-600 text-sm">Collaborating with FAO, GIZ, KickStart & more</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Section -->
+    <section class="py-32 parallax-bg relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');">
+        <div class="absolute inset-0 bg-primary/80"></div>
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="glassmorphism rounded-2xl p-12 backdrop-blur-sm fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                    Building a Climate-Resilient Future
+                </h2>
+                <p class="text-xl text-light mb-8">
+                    Our work directly supports EU priorities under the BOOST project, focusing on climate action, green energy transition, youth employment, and food security.
+                </p>
+                <button class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Learn About BOOST Project
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-16 bg-gray-50 relative overflow-hidden">
+        <!-- Animated background -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-accent rounded-full floating"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-primary rounded-full floating" style="animation-delay: 1.5s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-bold text-primary mb-4">Our Trusted Partners</h2>
+                <p class="text-gray-600">Building success through strategic collaborations</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                <div class="text-center p-4 fade-in">
+                    <div class="h-16 flex items-center justify-center bg-white rounded-xl shadow-md pulse-glow">
+                        <span class="text-gray-700 font-semibold text-lg">FAO</span>
+                    </div>
+                </div>
+                <div class="text-center p-4 fade-in" style="transition-delay: 0.1s;">
+                    <div class="h-16 flex items-center justify-center bg-white rounded-xl shadow-md pulse-glow">
+                        <span class="text-gray-700 font-semibold text-lg">GIZ</span>
+                    </div>
+                </div>
+                <div class="text-center p-4 fade-in" style="transition-delay: 0.2s;">
+                    <div class="h-16 flex items-center justify-center bg-white rounded-xl shadow-md pulse-glow">
+                        <span class="text-gray-700 font-semibold text-lg">KickStart</span>
+                    </div>
+                </div>
+                <div class="text-center p-4 fade-in" style="transition-delay: 0.3s;">
+                    <div class="h-16 flex items-center justify-center bg-white rounded-xl shadow-md pulse-glow">
+                        <span class="text-gray-700 font-semibold text-lg">Equity Bank</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary relative overflow-hidden">
+        <!-- Animated elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent/20 rounded-full floating"></div>
+            <div class="absolute top-1/3 right-10 w-24 h-24 bg-white/10 rounded-full floating" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-10 left-1/4 w-32 h-32 bg-secondary/30 rounded-full floating" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 fade-in">
+                Join Our Movement for Rural Transformation
+            </h2>
+            <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
+                Together, we can scale our impact to reach 10,000+ farmers and create 1,000 youth-led agribusinesses across Kenya.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
+                <button class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Become a Partner
+                </button>
+                <button class="glassmorphism border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
+                    Support Our Work
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 relative overflow-hidden">
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent rounded-full -translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold pulse-glow">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through agro-ecology, clean energy, and youth empowerment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Our Work</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Agro-ecology</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Clean Energy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Youth Empowerment</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Market Access</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-accent"></i>
+                            Rachuonyo North, Kenya
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-accent"></i>
+                            +254 XXX XXX XXX
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent"></i>
+                            info@agriprosolutions.org
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Agri-Pro Solutions Community Based Organization. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+<!-- Documentation Modal & Floating Button -->
+<!-- Documentation Modal & Floating Button -->
+<div id="doc-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+        <!-- Modal Header -->
+        <div class="bg-primary text-white p-6 flex justify-between items-center">
+            <div>
+                <h2 class="text-2xl font-bold">🔒 Protected Documentation</h2>
+                <p class="text-light">Enter password to access project documentation</p>
+            </div>
+            <button id="close-modal" class="text-white hover:text-accent text-2xl transition-colors duration-300">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Password Protection Section -->
+        <div id="password-section" class="p-8">
+            <div class="text-center mb-6">
+                <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-lock text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Authentication Required</h3>
+                <p class="text-gray-600">This documentation is protected. Please enter the password to continue.</p>
+            </div>
+            
+            <div class="max-w-md mx-auto space-y-4">
+                <div class="relative">
+                    <input type="password" id="password-input" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
+                           placeholder="Enter access password">
+                    <button id="toggle-password" class="absolute right-3 top-3 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                
+                <div id="password-error" class="hidden p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <div class="flex items-center text-red-700">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        <span id="error-message">Incorrect password</span>
+                    </div>
+                </div>
+                
+                <button id="submit-password" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
+                    <i class="fas fa-key mr-2"></i>Access Documentation
+                </button>
+                
+                <div class="text-center text-sm text-gray-500 mt-4">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    Contact the developer for access credentials
+                </div>
+            </div>
+        </div>
+        
+        <!-- Documentation Content Section (Hidden by default) -->
+        <div id="doc-content" class="hidden">
+            <div class="p-1 h-[60vh]">
+                <iframe id="doc-iframe" src="PROJECT_DOCUMENTATION.html" 
+                        class="w-full h-full border-0 rounded-lg" 
+                        loading="lazy">
+                </iframe>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="bg-gray-50 p-4 border-t flex justify-between items-center">
+                <div class="flex items-center text-gray-600">
+                    <i class="fas fa-clock text-accent mr-2"></i>
+                    <span id="timer">Auto-closing in <span id="countdown">20</span> seconds</span>
+                </div>
+                <div class="space-x-3">
+                    <button id="continue-reading" class="bg-accent text-primary px-6 py-2 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
+                        Continue Reading
+                    </button>
+                    <button id="close-now" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-400 transition-all duration-300">
+                        Close Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Floating Documentation Button -->
+<button id="floating-doc-btn" class="fixed bottom-6 right-6 z-40 bg-primary text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:bg-secondary transition-all duration-300 transform hover:scale-110 pulse-glow">
+    <i class="fas fa-book text-xl"></i>
+    <span class="absolute -top-2 -right-2 bg-accent text-primary text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center animate-ping"></span>
+</button>
+
+<script>
+// Documentation Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('doc-modal');
+    const floatingBtn = document.getElementById('floating-doc-btn');
+    const closeModal = document.getElementById('close-modal');
+    const closeNow = document.getElementById('close-now');
+    const continueReading = document.getElementById('continue-reading');
+    const countdownElement = document.getElementById('countdown');
+    const timerElement = document.getElementById('timer');
+    const passwordSection = document.getElementById('password-section');
+    const docContent = document.getElementById('doc-content');
+    const passwordInput = document.getElementById('password-input');
+    const submitPassword = document.getElementById('submit-password');
+    const togglePassword = document.getElementById('toggle-password');
+    const passwordError = document.getElementById('password-error');
+    const errorMessage = document.getElementById('error-message');
+    
+    let countdown = 20;
+    let countdownInterval;
+    
+    // Configuration - Change these as needed
+    const CONFIG = {
+        PASSWORD: 'AgriPro2025', // Change this to your desired password
+        MAX_VISITS: 2,
+        AUTO_CLOSE_TIME: 20
+    };
+    
+    // Visit tracking
+    let visitCount = parseInt(localStorage.getItem('agripro_visit_count') || '0');
+    let hasAccess = localStorage.getItem('agripro_has_access') === 'true';
+    
+    // Increment visit count
+    visitCount++;
+    localStorage.setItem('agripro_visit_count', visitCount.toString());
+    
+    // Show modal based on conditions
+    function shouldShowModal() {
+        // Don't show if user already has access
+        if (hasAccess) return false;
+        
+        // Show only on 2nd visit
+        return visitCount === 2;
+    }
+    
+    // Show modal on 2nd visit after 3 seconds
+    if (shouldShowModal()) {
+        setTimeout(() => {
+            showModal();
+        }, 3000);
+    }
+    
+    function showModal() {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        // Always show password section first
+        showPasswordSection();
+    }
+    
+    function showPasswordSection() {
+        passwordSection.classList.remove('hidden');
+        docContent.classList.add('hidden');
+        passwordInput.value = '';
+        passwordError.classList.add('hidden');
+        passwordInput.focus();
+    }
+    
+    function showDocContent() {
+        passwordSection.classList.add('hidden');
+        docContent.classList.remove('hidden');
+        startCountdown();
+        // Mark as having access
+        hasAccess = true;
+        localStorage.setItem('agripro_has_access', 'true');
+    }
+    
+    function hideModal() {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+        clearInterval(countdownInterval);
+        // Reset to password section for next time
+        showPasswordSection();
+    }
+    
+    function startCountdown() {
+        countdown = CONFIG.AUTO_CLOSE_TIME;
+        countdownElement.textContent = countdown;
+        
+        countdownInterval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            
+            if (countdown <= 0) {
+                hideModal();
+            }
+        }, 1000);
+    }
+    
+    function stopCountdown() {
+        clearInterval(countdownInterval);
+        timerElement.innerHTML = '<i class="fas fa-infinity text-accent mr-2"></i><span>Reading mode - no time limit</span>';
+    }
+    
+    // Password validation
+    function validatePassword() {
+        const enteredPassword = passwordInput.value.trim();
+        
+        if (enteredPassword === CONFIG.PASSWORD) {
+            showDocContent();
+            return true;
+        } else {
+            passwordError.classList.remove('hidden');
+            errorMessage.textContent = 'Incorrect password. Please try again.';
+            passwordInput.focus();
+            return false;
+        }
+    }
+    
+    // Toggle password visibility
+    function togglePasswordVisibility() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        togglePassword.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+    }
+    
+    // Event Listeners
+    closeModal.addEventListener('click', hideModal);
+    closeNow.addEventListener('click', hideModal);
+    
+    continueReading.addEventListener('click', function() {
+        stopCountdown();
+        this.style.display = 'none';
+    });
+    
+    floatingBtn.addEventListener('click', function() {
+        if (hasAccess) {
+            showModal();
+            showDocContent();
+        } else {
+            showModal();
+        }
+    });
+    
+    submitPassword.addEventListener('click', validatePassword);
+    
+    passwordInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            validatePassword();
+        }
+    });
+    
+    togglePassword.addEventListener('click', togglePasswordVisibility);
+    
+    // Close modal when clicking outside content
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            hideModal();
+        }
+    });
+    
+    // Escape key to close modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('flex')) {
+            hideModal();
+        }
+    });
+    
+    // Add some cool effects to floating button
+    let floatInterval;
+    function startFloating() {
+        let scale = 1;
+        floatInterval = setInterval(() => {
+            scale = scale === 1 ? 1.05 : 1;
+            floatingBtn.style.transform = `scale(${scale})`;
+        }, 2000);
+    }
+    
+    function stopFloating() {
+        clearInterval(floatInterval);
+        floatingBtn.style.transform = 'scale(1)';
+    }
+    
+    floatingBtn.addEventListener('mouseenter', stopFloating);
+    floatingBtn.addEventListener('mouseleave', startFloating);
+    
+    // Update floating button based on access
+    function updateFloatingButton() {
+        if (hasAccess) {
+            floatingBtn.innerHTML = `
+                <i class="fas fa-book-open text-xl"></i>
+                <span class="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                    <i class="fas fa-check text-[8px]"></i>
+                </span>
+            `;
+        }
+    }
+    
+    // Start floating animation and update button
+    startFloating();
+    updateFloatingButton();
+    
+    // Debug info (remove in production)
+    console.log(`Visit count: ${visitCount}`);
+    console.log(`Has access: ${hasAccess}`);
+    console.log('Password hint: Check the CONFIG.PASSWORD in the code');
+});
+</script>
+
+<style>
+/* Additional styles for the modal and button */
+#doc-modal {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#floating-doc-btn {
+    box-shadow: 0 4px 20px rgba(45, 80, 22, 0.3);
+}
+
+/* Smooth scrolling for iframe content */
+#doc-iframe {
+    scroll-behavior: smooth;
+}
+
+/* Pulse animation for the notification dot */
+.animate-ping {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+    75%, 100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Password input focus styles */
+#password-input:focus {
+    border-color: #7cb342;
+    box-shadow: 0 0 0 3px rgba(124, 179, 66, 0.1);
+}
+
+/* Success state for floating button when access granted */
+.bg-green-500 {
+    background-color: #10B981;
+}
+</style>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Initialize GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Fade in animation for elements with class 'fade-in'
+        gsap.utils.toArray('.fade-in').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 50 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+        
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // 2 seconds
+                const step = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
+                };
+                
+                // Start animation when counter is in view
+                ScrollTrigger.create({
+                    trigger: counter,
+                    start: "top 80%",
+                    onEnter: updateCounter,
+                    once: true
+                });
+            });
+        }
+        
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            animateCounters();
+            
+            // Add hover effects to program cards
+            const programCards = document.querySelectorAll('.program-card');
+            programCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) rotateX(5deg)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateX(0)';
+                });
+            });
+            
+            // Navbar background on scroll
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-white/95', 'backdrop-blur-md');
+                    nav.classList.remove('bg-white/90');
+                } else {
+                    nav.classList.remove('bg-white/95');
+                    nav.classList.add('bg-white/90');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
