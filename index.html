@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.67">
@@ -36,147 +37,250 @@
             background-position: center;
             background-attachment: fixed;
         }
-        
+
         .glassmorphism {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
-        
+
         @keyframes floating {
-            0% { transform: translate(0, 0px); }
-            50% { transform: translate(0, 15px); }
-            100% { transform: translate(0, -0px); }
+            0% {
+                transform: translate(0, 0px);
+            }
+
+            50% {
+                transform: translate(0, 15px);
+            }
+
+            100% {
+                transform: translate(0, -0px);
+            }
         }
-        
+
         .pulse-glow {
             animation: pulse-glow 2s infinite;
         }
-        
+
         @keyframes pulse-glow {
-            0% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
-            50% { box-shadow: 0 0 20px rgba(124, 179, 66, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+            0% {
+                box-shadow: 0 0 5px rgba(124, 179, 66, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(124, 179, 66, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(124, 179, 66, 0.4);
+            }
         }
-        
+
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
         }
-        
+
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .program-card {
             transition: all 0.4s ease;
             transform-style: preserve-3d;
         }
-        
+
         .program-card:hover {
             transform: translateY(-10px) rotateX(5deg);
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .parallax-bg {
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
         }
-        
+
         .counter {
             font-variant-numeric: tabular-nums;
         }
-        
+
         .gradient-text {
             background: linear-gradient(45deg, #2d5016, #7cb342);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
+        /* BOOST Modal Styles */
+        .boost-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .boost-modal-content {
+            background: white;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .boost-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .boost-close:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.1);
+        }
     </style>
 </head>
+
 <body class="font-sans bg-white overflow-x-hidden">
     <!-- Navigation -->
     <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20">
-            <div class="flex items-center">
-                <a href="index.html" class="flex-shrink-0 flex items-center">
-                    <div class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg pulse-glow">
-                        APS
-                    </div>
-                    <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
-                </a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div
+                            class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg pulse-glow">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="text-primary hover:text-secondary font-medium transition-colors duration-300">Home</a>
+                    <a href="about.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
+                    <a href="programs.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
+                    <a href="impact.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
+                    <a href="get-involved.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get
+                        Involved</a>
+                    <a href="contact.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
+                    <a href="get-involved.html#partnership"
+                        class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-md">
+                        Partner With Us
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button"
+                        class="text-primary transition-transform duration-300 hover:scale-110">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
-            
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-primary hover:text-secondary font-medium transition-colors duration-300">Home</a>
-                <a href="about.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
-                <a href="programs.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
-                <a href="impact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
-                <a href="get-involved.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get Involved</a>
-                <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
-                <a href="get-involved.html#partnership" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-md">
+        </div>
+
+        <div id="mobile-menu"
+            class="md:hidden hidden bg-white/95 backdrop-blur-md border-t transition-all duration-300">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html"
+                    class="block px-3 py-2 text-primary font-medium transition-colors duration-300">Home</a>
+                <a href="about.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">About</a>
+                <a href="programs.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Programs</a>
+                <a href="impact.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Impact</a>
+                <a href="get-involved.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Get
+                    Involved</a>
+                <a href="contact.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Contact</a>
+                <a href="get-involved.html#partnership"
+                    class="block w-full mt-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 text-center">
                     Partner With Us
                 </a>
             </div>
-            
-            <div class="md:hidden flex items-center">
-                <button id="mobile-menu-button" class="text-primary transition-transform duration-300 hover:scale-110">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
         </div>
-    </div>
-    
-    <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t transition-all duration-300">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="index.html" class="block px-3 py-2 text-primary font-medium transition-colors duration-300">Home</a>
-            <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">About</a>
-            <a href="programs.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Programs</a>
-            <a href="impact.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Impact</a>
-            <a href="get-involved.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Get Involved</a>
-            <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary transition-colors duration-300">Contact</a>
-            <a href="get-involved.html#partnership" class="block w-full mt-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 text-center">
-                Partner With Us
-            </a>
-        </div>
-    </div>
-</nav>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden">
         <!-- Animated background elements -->
         <div class="absolute top-10 left-10 w-20 h-20 bg-accent/20 rounded-full floating"></div>
-        <div class="absolute bottom-20 right-20 w-16 h-16 bg-secondary/30 rounded-full floating" style="animation-delay: 1s;"></div>
-        <div class="absolute top-1/3 right-1/4 w-12 h-12 bg-white/10 rounded-full floating" style="animation-delay: 2s;"></div>
-        
+        <div class="absolute bottom-20 right-20 w-16 h-16 bg-secondary/30 rounded-full floating"
+            style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-12 h-12 bg-white/10 rounded-full floating"
+            style="animation-delay: 2s;"></div>
+
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 z-10">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight fade-in">
-                Empowering Rural Regeneration & 
+                Empowering Rural Regeneration &
                 <span class="text-accent">Climate Resilience</span>
             </h1>
             <p class="text-xl md:text-2xl mb-8 text-light fade-in" style="transition-delay: 0.2s;">
-                Transforming smallholder agriculture in Rachuonyo North, Kenya through agroecology, clean energy, and youth empowerment.
+                Transforming smallholder agriculture in Rachuonyo North, Kenya through agroecology, clean energy, and
+                youth empowerment.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
-                <button class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
-                   <a href="programs.html"> Our Programs </a>
+                <button
+                    class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <a href="programs.html"> Our Programs </a>
                 </button>
-                <button class="glassmorphism border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
+                <button
+                    class="glassmorphism border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
                     <a href="impact.html">See Our Impact</a>
                 </button>
             </div>
         </div>
-        
+
         <!-- Scroll indicator -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
             <div class="flex flex-col items-center text-white/70">
@@ -192,10 +296,12 @@
     <section class="py-16 bg-light relative overflow-hidden">
         <!-- Background pattern -->
         <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-0 left-0 w-72 h-72 bg-primary rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-            <div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full translate-x-1/2 translate-y-1/2"></div>
+            <div class="absolute top-0 left-0 w-72 h-72 bg-primary rounded-full -translate-x-1/2 -translate-y-1/2">
+            </div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full translate-x-1/2 translate-y-1/2">
+            </div>
         </div>
-        
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-12 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Impact in Rachuonyo North</h2>
@@ -206,15 +312,18 @@
                     <div class="text-4xl font-bold text-primary mb-2 counter" data-target="2500">0</div>
                     <div class="text-gray-600">Farmers Trained in Agro-ecology</div>
                 </div>
-                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in" style="transition-delay: 0.1s;">
+                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in"
+                    style="transition-delay: 0.1s;">
                     <div class="text-4xl font-bold text-primary mb-2 counter" data-target="30000">0</div>
                     <div class="text-gray-600">Tree Seedlings Distributed</div>
                 </div>
-                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in" style="transition-delay: 0.2s;">
+                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in"
+                    style="transition-delay: 0.2s;">
                     <div class="text-4xl font-bold text-primary mb-2 counter" data-target="300">0</div>
                     <div class="text-gray-600">Youth Empowered</div>
                 </div>
-                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in" style="transition-delay: 0.3s;">
+                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in"
+                    style="transition-delay: 0.3s;">
                     <div class="text-4xl font-bold text-primary mb-2 counter" data-target="7">0</div>
                     <div class="text-gray-600">Wards Reached</div>
                 </div>
@@ -227,7 +336,7 @@
         <!-- Background elements -->
         <div class="absolute -top-24 -right-24 w-48 h-48 bg-accent/10 rounded-full"></div>
         <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-primary/10 rounded-full"></div>
-        
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Integrated Programs</h2>
@@ -243,11 +352,13 @@
                         <i class="fas fa-seedling text-white"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-primary mb-3">Agro-ecology</h3>
-                    <p class="text-gray-600 text-sm">Climate-resilient farming, soil health, and agroforestry training</p>
+                    <p class="text-gray-600 text-sm">Climate-resilient farming, soil health, and agroforestry training
+                    </p>
                 </div>
 
                 <!-- Program 2 -->
-                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-secondary shadow-md fade-in" style="transition-delay: 0.1s;">
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-secondary shadow-md fade-in"
+                    style="transition-delay: 0.1s;">
                     <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mb-4 pulse-glow">
                         <i class="fas fa-recycle text-white"></i>
                     </div>
@@ -256,7 +367,8 @@
                 </div>
 
                 <!-- Program 3 -->
-                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-accent shadow-md fade-in" style="transition-delay: 0.2s;">
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-accent shadow-md fade-in"
+                    style="transition-delay: 0.2s;">
                     <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-4 pulse-glow">
                         <i class="fas fa-tint text-white"></i>
                     </div>
@@ -265,7 +377,8 @@
                 </div>
 
                 <!-- Program 4 -->
-                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-primary shadow-md fade-in" style="transition-delay: 0.3s;">
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-primary shadow-md fade-in"
+                    style="transition-delay: 0.3s;">
                     <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-4 pulse-glow">
                         <i class="fas fa-bolt text-white"></i>
                     </div>
@@ -274,7 +387,8 @@
                 </div>
 
                 <!-- Program 5 -->
-                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-secondary shadow-md fade-in" style="transition-delay: 0.4s;">
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-secondary shadow-md fade-in"
+                    style="transition-delay: 0.4s;">
                     <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mb-4 pulse-glow">
                         <i class="fas fa-truck-loading text-white"></i>
                     </div>
@@ -283,7 +397,8 @@
                 </div>
 
                 <!-- Program 6 -->
-                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-accent shadow-md fade-in" style="transition-delay: 0.5s;">
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-accent shadow-md fade-in"
+                    style="transition-delay: 0.5s;">
                     <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-4 pulse-glow">
                         <i class="fas fa-tractor text-white"></i>
                     </div>
@@ -292,7 +407,8 @@
                 </div>
 
                 <!-- Program 7 -->
-                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-primary shadow-md fade-in" style="transition-delay: 0.6s;">
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-primary shadow-md fade-in"
+                    style="transition-delay: 0.6s;">
                     <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-4 pulse-glow">
                         <i class="fas fa-users text-white"></i>
                     </div>
@@ -301,7 +417,8 @@
                 </div>
 
                 <!-- Program 8 -->
-                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-secondary shadow-md fade-in" style="transition-delay: 0.7s;">
+                <div class="program-card bg-light rounded-xl p-6 border-l-4 border-secondary shadow-md fade-in"
+                    style="transition-delay: 0.7s;">
                     <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mb-4 pulse-glow">
                         <i class="fas fa-handshake text-white"></i>
                     </div>
@@ -313,7 +430,8 @@
     </section>
 
     <!-- Parallax Section -->
-    <section class="py-32 parallax-bg relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');">
+    <section class="py-32 parallax-bg relative overflow-hidden"
+        style="background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');">
         <div class="absolute inset-0 bg-primary/80"></div>
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="glassmorphism rounded-2xl p-12 backdrop-blur-sm fade-in">
@@ -321,9 +439,11 @@
                     Building a Climate-Resilient Future
                 </h2>
                 <p class="text-xl text-light mb-8">
-                    Our work directly supports EU priorities under the BOOST project, focusing on climate action, green energy transition, youth employment, and food security.
+                    Our work directly supports EU priorities under the BOOST project, focusing on climate action, green
+                    energy transition, youth employment, and food security.
                 </p>
-                <button class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button id="boost-project-btn"
+                    class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Learn About BOOST Project
                 </button>
             </div>
@@ -335,9 +455,10 @@
         <!-- Animated background -->
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-accent rounded-full floating"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-primary rounded-full floating" style="animation-delay: 1.5s;"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-primary rounded-full floating"
+                style="animation-delay: 1.5s;"></div>
         </div>
-        
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-12 fade-in">
                 <h2 class="text-3xl font-bold text-primary mb-4">Our Trusted Partners</h2>
@@ -373,73 +494,431 @@
         <!-- Animated elements -->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
             <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent/20 rounded-full floating"></div>
-            <div class="absolute top-1/3 right-10 w-24 h-24 bg-white/10 rounded-full floating" style="animation-delay: 1s;"></div>
-            <div class="absolute bottom-10 left-1/4 w-32 h-32 bg-secondary/30 rounded-full floating" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/3 right-10 w-24 h-24 bg-white/10 rounded-full floating"
+                style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-10 left-1/4 w-32 h-32 bg-secondary/30 rounded-full floating"
+                style="animation-delay: 2s;"></div>
         </div>
-        
+
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 fade-in">
                 Join Our Movement for Rural Transformation
             </h2>
             <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
-                Together, we can scale our impact to reach 10,000+ farmers and create 1,000 youth-led agribusinesses across Kenya.
+                Together, we can scale our impact to reach 10,000+ farmers and create 1,000 youth-led agribusinesses
+                across Kenya.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
-                <button class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    Become a Partner
+                <button
+                    class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <a href="get-involved.html#partnership"
+                        class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-md">
+                        Become a Partner
+                    </a>
                 </button>
-                <button class="glassmorphism border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
+                <button
+                    class="glassmorphism border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
                     Support Our Work
                 </button>
             </div>
         </div>
     </section>
 
+    <!-- BOOST Project Modal -->
+    <div id="boost-modal" class="boost-modal">
+        <span class="boost-close">&times;</span>
+        <div class="boost-modal-content">
+            <!-- Modal Header -->
+            <div class="bg-primary text-white p-8 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2">🌍 BOOST Project</h2>
+                        <p class="text-light text-lg">EU-Supported Initiative for Community Resilience & Sustainable
+                            Development</p>
+                    </div>
+                    <div class="bg-white/20 p-4 rounded-xl">
+                        <i class="fas fa-rocket text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-8 space-y-8">
+                <!-- What is BOOST Section -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-info-circle mr-3 text-accent"></i>
+                        What Is the BOOST Project?
+                    </h3>
+                    <div class="bg-light p-6 rounded-xl border-l-4 border-accent">
+                        <p class="text-gray-700 text-lg mb-4">
+                            The BOOST Project is an EU-supported initiative designed to strengthen community resilience,
+                            climate action, youth employment, and sustainable food systems in rural areas across Kenya
+                            and the region.
+                        </p>
+                        <p class="text-gray-700 text-lg font-semibold">
+                            "BOOST" focuses on building capacity, supporting innovation, and scaling successful
+                            community models that protect the environment and improve livelihoods.
+                        </p>
+                        <div class="mt-4 p-4 bg-white rounded-lg">
+                            <p class="text-primary font-semibold text-center">
+                                👉 BOOST helps community organizations grow faster, reach more people, and deliver
+                                bigger impact.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Focus Areas Section -->
+                <div class="fade-in" style="transition-delay: 0.1s;">
+                    <h3 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fas fa-bullseye mr-3 text-accent"></i>
+                        BOOST Project Focus Areas
+                    </h3>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Climate Action -->
+                        <div
+                            class="bg-white border border-gray-200 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-leaf text-green-600 text-xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-primary">Climate Action & Biodiversity</h4>
+                            </div>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Agro-ecology
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Soil health improvement
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Tree growing
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Circular economy solutions
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Nature restoration
+                                </li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-green-50 rounded-lg">
+                                <p class="text-sm text-green-700">
+                                    <strong>Perfect Fit:</strong> Your agro-ecology training and 30,000+ seedlings
+                                    distribution
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Green Energy -->
+                        <div
+                            class="bg-white border border-gray-200 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-bolt text-blue-600 text-xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-primary">Green Energy Transition</h4>
+                            </div>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Promoting clean cooking
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Renewable energy adoption
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Reducing firewood use
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Lowering emissions
+                                </li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                                <p class="text-sm text-blue-700">
+                                    <strong>Direct Alignment:</strong> Your clean energy work with GIZ (improved
+                                    cookstoves)
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Youth Employment -->
+                        <div
+                            class="bg-white border border-gray-200 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-users text-purple-600 text-xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-primary">Youth Employment & Digitalization</h4>
+                            </div>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Training youth in agribusiness
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Supporting innovation hubs
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Entrepreneurship and green jobs
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Digital agriculture adoption
+                                </li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-purple-50 rounded-lg">
+                                <p class="text-sm text-purple-700">
+                                    <strong>Exact Match:</strong> Your youth empowerment, BSF training, and digital
+                                    skills programs
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Food Security -->
+                        <div
+                            class="bg-white border border-gray-200 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-seedling text-orange-600 text-xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-primary">Food Security & Resilience</h4>
+                            </div>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Diversified farming
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Improved water access (irrigation)
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Market systems
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Reduced losses
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-accent mr-2"></i>
+                                    Community food sovereignty
+                                </li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-orange-50 rounded-lg">
+                                <p class="text-sm text-orange-700">
+                                    <strong>Heavy Contribution:</strong> Your irrigation, aggregation, and agro-ecology
+                                    work
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why BOOST is Important -->
+                <div class="fade-in" style="transition-delay: 0.2s;">
+                    <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-star mr-3 text-accent"></i>
+                        Why BOOST Is Important
+                    </h3>
+                    <div class="bg-gradient-to-r from-primary/10 to-accent/10 p-6 rounded-xl border border-primary/20">
+                        <p class="text-gray-700 text-lg mb-4">
+                            The BOOST project aims to support grassroots groups like Agri-Pro Solutions by:
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-center p-3 bg-white rounded-lg">
+                                <i class="fas fa-chart-line text-accent mr-3"></i>
+                                <span>Strengthening their capacity</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-white rounded-lg">
+                                <i class="fas fa-lightbulb text-accent mr-3"></i>
+                                <span>Funding climate-smart innovations</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-white rounded-lg">
+                                <i class="fas fa-expand text-accent mr-3"></i>
+                                <span>Enabling them to scale their programs</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-white rounded-lg">
+                                <i class="fas fa-handshake text-accent mr-3"></i>
+                                <span>Supporting partnerships</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How Agri-Pro Fits -->
+                <div class="fade-in" style="transition-delay: 0.3s;">
+                    <h3 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fas fa-puzzle-piece mr-3 text-accent"></i>
+                        How Agri-Pro Solutions Fits the BOOST Focus
+                    </h3>
+
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="bg-primary text-white p-4">
+                            <h4 class="text-xl font-bold text-center">Your Perfect Alignment with BOOST Priorities</h4>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            BOOST Priority</th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Your Contribution</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-leaf text-green-600 mr-2"></i>
+                                                <span class="font-medium text-gray-900">Climate Action</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            Agro-ecology, 30,000+ seedlings, soil restoration
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-bolt text-blue-600 mr-2"></i>
+                                                <span class="font-medium text-gray-900">Green Energy</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            300+ households adopting improved cookstoves
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-users text-purple-600 mr-2"></i>
+                                                <span class="font-medium text-gray-900">Youth Jobs</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            300+ youth trained, BSF, poultry, digital tools
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-seedling text-orange-600 mr-2"></i>
+                                                <span class="font-medium text-gray-900">Food Security</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            Irrigation, market access, aggregation, mechanization
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-6 bg-accent/10 rounded-xl border border-accent/30">
+                        <p class="text-center text-primary font-semibold text-lg">
+                            🎯 This means your CBO is a perfect match for the BOOST vision, making you highly suitable
+                            for partnership, funding, or scaling support.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-gray-50 p-6 rounded-b-2xl border-t">
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="text-gray-600">
+                        <i class="fas fa-handshake text-accent mr-2"></i>
+                        Ready to explore BOOST partnership opportunities?
+                    </div>
+                    <div class="flex gap-3">
+                        <button onclick="closeBoostModal()"
+                            class="bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-400 transition-all duration-300">
+                            Close
+                        </button>
+                        <a href="get-involved.html"
+                            class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                            Get Involved
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12 relative overflow-hidden">
         <!-- Background pattern -->
         <div class="absolute inset-0 opacity-5">
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent rounded-full -translate-x-1/2 translate-y-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent rounded-full -translate-x-1/2 translate-y-1/2">
+            </div>
         </div>
-        
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
                     <div class="flex items-center mb-4">
-                        <div class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold pulse-glow">
+                        <div
+                            class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold pulse-glow">
                             APS
                         </div>
                         <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
                     </div>
                     <p class="text-gray-300 mb-4">
-                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through agro-ecology, clean energy, and youth empowerment.
+                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through
+                        agro-ecology, clean energy, and youth empowerment.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
+                        <a href="#"
+                            class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
+                        <a href="#"
+                            class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
+                        <a href="#"
+                            class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
+                        <a href="#"
+                            class="text-gray-300 hover:text-accent transition-colors duration-300 transform hover:scale-110">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Our Work</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Agro-ecology</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Clean Energy</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Youth Empowerment</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Market Access</a></li>
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Agro-ecology</a>
+                        </li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Clean
+                                Energy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Youth
+                                Empowerment</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Market
+                                Access</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
                     <ul class="space-y-2 text-gray-300">
@@ -458,369 +937,66 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
                 <p>&copy; 2025 Agri-Pro Solutions Community Based Organization. All rights reserved.</p>
             </div>
         </div>
     </footer>
-<!-- Documentation Modal & Floating Button -->
-<!-- Documentation Modal & Floating Button -->
-<div id="doc-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-        <!-- Modal Header -->
-        <div class="bg-primary text-white p-6 flex justify-between items-center">
-            <div>
-                <h2 class="text-2xl font-bold">🔒 Protected Documentation</h2>
-                <p class="text-light">Enter password to access project documentation</p>
-            </div>
-            <button id="close-modal" class="text-white hover:text-accent text-2xl transition-colors duration-300">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <!-- Password Protection Section -->
-        <div id="password-section" class="p-8">
-            <div class="text-center mb-6">
-                <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-lock text-primary text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Authentication Required</h3>
-                <p class="text-gray-600">This documentation is protected. Please enter the password to continue.</p>
-            </div>
-            
-            <div class="max-w-md mx-auto space-y-4">
-                <div class="relative">
-                    <input type="password" id="password-input" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
-                           placeholder="Enter access password">
-                    <button id="toggle-password" class="absolute right-3 top-3 text-gray-400 hover:text-gray-600">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                </div>
-                
-                <div id="password-error" class="hidden p-3 bg-red-50 border border-red-200 rounded-lg">
-                    <div class="flex items-center text-red-700">
-                        <i class="fas fa-exclamation-circle mr-2"></i>
-                        <span id="error-message">Incorrect password</span>
-                    </div>
-                </div>
-                
-                <button id="submit-password" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
-                    <i class="fas fa-key mr-2"></i>Access Documentation
-                </button>
-                
-                <div class="text-center text-sm text-gray-500 mt-4">
-                    <i class="fas fa-info-circle mr-1"></i>
-                    Contact the developer for access credentials
-                </div>
-            </div>
-        </div>
-        
-        <!-- Documentation Content Section (Hidden by default) -->
-        <div id="doc-content" class="hidden">
-            <div class="p-1 h-[60vh]">
-                <iframe id="doc-iframe" src="Project_Documentation.html" 
-                        class="w-full h-full border-0 rounded-lg" 
-                        loading="lazy">
-                </iframe>
-            </div>
-            
-            <!-- Modal Footer -->
-            <div class="bg-gray-50 p-4 border-t flex justify-between items-center">
-                <div class="flex items-center text-gray-600">
-                    <i class="fas fa-clock text-accent mr-2"></i>
-                    <span id="timer">Auto-closing in <span id="countdown">20</span> seconds</span>
-                </div>
-                <div class="space-x-3">
-                    <button id="continue-reading" class="bg-accent text-primary px-6 py-2 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
-                        Continue Reading
-                    </button>
-                    <button id="close-now" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-400 transition-all duration-300">
-                        Close Now
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Floating Documentation Button -->
-<button id="floating-doc-btn" class="fixed bottom-6 right-6 z-40 bg-primary text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:bg-secondary transition-all duration-300 transform hover:scale-110 pulse-glow">
-    <i class="fas fa-book text-xl"></i>
-    <span class="absolute -top-2 -right-2 bg-accent text-primary text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center animate-ping"></span>
-</button>
-
-<script>
-// Documentation Modal Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('doc-modal');
-    const floatingBtn = document.getElementById('floating-doc-btn');
-    const closeModal = document.getElementById('close-modal');
-    const closeNow = document.getElementById('close-now');
-    const continueReading = document.getElementById('continue-reading');
-    const countdownElement = document.getElementById('countdown');
-    const timerElement = document.getElementById('timer');
-    const passwordSection = document.getElementById('password-section');
-    const docContent = document.getElementById('doc-content');
-    const passwordInput = document.getElementById('password-input');
-    const submitPassword = document.getElementById('submit-password');
-    const togglePassword = document.getElementById('toggle-password');
-    const passwordError = document.getElementById('password-error');
-    const errorMessage = document.getElementById('error-message');
-    
-    let countdown = 20;
-    let countdownInterval;
-    
-    // Configuration - Change these as needed
-    const CONFIG = {
-        PASSWORD: 'AgriPro2025', // Change this to your desired password
-        MAX_VISITS: 2,
-        AUTO_CLOSE_TIME: 20
-    };
-    
-    // Visit tracking
-    let visitCount = parseInt(localStorage.getItem('agripro_visit_count') || '0');
-    let hasAccess = localStorage.getItem('agripro_has_access') === 'true';
-    
-    // Increment visit count
-    visitCount++;
-    localStorage.setItem('agripro_visit_count', visitCount.toString());
-    
-    // Show modal based on conditions
-    function shouldShowModal() {
-        // Don't show if user already has access
-        if (hasAccess) return false;
-        
-        // Show only on 2nd visit
-        return visitCount === 2;
-    }
-    
-    // Show modal on 2nd visit after 3 seconds
-    if (shouldShowModal()) {
-        setTimeout(() => {
-            showModal();
-        }, 3000);
-    }
-    
-    function showModal() {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        // Always show password section first
-        showPasswordSection();
-    }
-    
-    function showPasswordSection() {
-        passwordSection.classList.remove('hidden');
-        docContent.classList.add('hidden');
-        passwordInput.value = '';
-        passwordError.classList.add('hidden');
-        passwordInput.focus();
-    }
-    
-    function showDocContent() {
-        passwordSection.classList.add('hidden');
-        docContent.classList.remove('hidden');
-        startCountdown();
-        // Mark as having access
-        hasAccess = true;
-        localStorage.setItem('agripro_has_access', 'true');
-    }
-    
-    function hideModal() {
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-        clearInterval(countdownInterval);
-        // Reset to password section for next time
-        showPasswordSection();
-    }
-    
-    function startCountdown() {
-        countdown = CONFIG.AUTO_CLOSE_TIME;
-        countdownElement.textContent = countdown;
-        
-        countdownInterval = setInterval(() => {
-            countdown--;
-            countdownElement.textContent = countdown;
-            
-            if (countdown <= 0) {
-                hideModal();
-            }
-        }, 1000);
-    }
-    
-    function stopCountdown() {
-        clearInterval(countdownInterval);
-        timerElement.innerHTML = '<i class="fas fa-infinity text-accent mr-2"></i><span>Reading mode - no time limit</span>';
-    }
-    
-    // Password validation
-    function validatePassword() {
-        const enteredPassword = passwordInput.value.trim();
-        
-        if (enteredPassword === CONFIG.PASSWORD) {
-            showDocContent();
-            return true;
-        } else {
-            passwordError.classList.remove('hidden');
-            errorMessage.textContent = 'Incorrect password. Please try again.';
-            passwordInput.focus();
-            return false;
-        }
-    }
-    
-    // Toggle password visibility
-    function togglePasswordVisibility() {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        togglePassword.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
-    }
-    
-    // Event Listeners
-    closeModal.addEventListener('click', hideModal);
-    closeNow.addEventListener('click', hideModal);
-    
-    continueReading.addEventListener('click', function() {
-        stopCountdown();
-        this.style.display = 'none';
-    });
-    
-    floatingBtn.addEventListener('click', function() {
-        if (hasAccess) {
-            showModal();
-            showDocContent();
-        } else {
-            showModal();
-        }
-    });
-    
-    submitPassword.addEventListener('click', validatePassword);
-    
-    passwordInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            validatePassword();
-        }
-    });
-    
-    togglePassword.addEventListener('click', togglePasswordVisibility);
-    
-    // Close modal when clicking outside content
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            hideModal();
-        }
-    });
-    
-    // Escape key to close modal
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('flex')) {
-            hideModal();
-        }
-    });
-    
-    // Add some cool effects to floating button
-    let floatInterval;
-    function startFloating() {
-        let scale = 1;
-        floatInterval = setInterval(() => {
-            scale = scale === 1 ? 1.05 : 1;
-            floatingBtn.style.transform = `scale(${scale})`;
-        }, 2000);
-    }
-    
-    function stopFloating() {
-        clearInterval(floatInterval);
-        floatingBtn.style.transform = 'scale(1)';
-    }
-    
-    floatingBtn.addEventListener('mouseenter', stopFloating);
-    floatingBtn.addEventListener('mouseleave', startFloating);
-    
-    // Update floating button based on access
-    function updateFloatingButton() {
-        if (hasAccess) {
-            floatingBtn.innerHTML = `
-                <i class="fas fa-book-open text-xl"></i>
-                <span class="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
-                    <i class="fas fa-check text-[8px]"></i>
-                </span>
-            `;
-        }
-    }
-    
-    // Start floating animation and update button
-    startFloating();
-    updateFloatingButton();
-    
-    // Debug info (remove in production)
-    console.log(`Visit count: ${visitCount}`);
-    console.log(`Has access: ${hasAccess}`);
-    console.log('Password hint: Check the CONFIG.PASSWORD in the code');
-});
-</script>
-
-<style>
-/* Additional styles for the modal and button */
-#doc-modal {
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-#floating-doc-btn {
-    box-shadow: 0 4px 20px rgba(45, 80, 22, 0.3);
-}
-
-/* Smooth scrolling for iframe content */
-#doc-iframe {
-    scroll-behavior: smooth;
-}
-
-/* Pulse animation for the notification dot */
-.animate-ping {
-    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-@keyframes ping {
-    75%, 100% {
-        transform: scale(1.5);
-        opacity: 0;
-    }
-}
-
-/* Password input focus styles */
-#password-input:focus {
-    border-color: #7cb342;
-    box-shadow: 0 0 0 3px rgba(124, 179, 66, 0.1);
-}
-
-/* Success state for floating button when access granted */
-.bg-green-500 {
-    background-color: #10B981;
-}
-</style>
+    <!-- Documentation Modal & Floating Button -->
+    <!-- ... (your existing documentation modal code remains the same) ... -->
 
     <script>
+        // BOOST Modal Functionality
+        const boostModal = document.getElementById('boost-modal');
+        const boostBtn = document.getElementById('boost-project-btn');
+        const boostClose = document.querySelector('.boost-close');
+
+        function openBoostModal() {
+            boostModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBoostModal() {
+            boostModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        boostBtn.addEventListener('click', openBoostModal);
+        boostClose.addEventListener('click', closeBoostModal);
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function (event) {
+            if (event.target === boostModal) {
+                closeBoostModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && boostModal.style.display === 'block') {
+                closeBoostModal();
+            }
+        });
+
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
 
         // Initialize GSAP animations
         gsap.registerPlugin(ScrollTrigger);
-        
+
         // Fade in animation for elements with class 'fade-in'
         gsap.utils.toArray('.fade-in').forEach(element => {
-            gsap.fromTo(element, 
+            gsap.fromTo(element,
                 { opacity: 0, y: 50 },
-                { 
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 0.8, 
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
                     scrollTrigger: {
                         trigger: element,
                         start: "top 80%",
@@ -830,17 +1006,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             );
         });
-        
+
         // Counter animation
         function animateCounters() {
             const counters = document.querySelectorAll('.counter');
-            
+
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
                 const duration = 2000; // 2 seconds
                 const step = target / (duration / 16); // 60fps
                 let current = 0;
-                
+
                 const updateCounter = () => {
                     current += step;
                     if (current < target) {
@@ -850,7 +1026,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         counter.innerText = target.toLocaleString();
                     }
                 };
-                
+
                 // Start animation when counter is in view
                 ScrollTrigger.create({
                     trigger: counter,
@@ -860,25 +1036,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         }
-        
+
         // Initialize animations when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             animateCounters();
-            
+
             // Add hover effects to program cards
             const programCards = document.querySelectorAll('.program-card');
             programCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
+                card.addEventListener('mouseenter', function () {
                     this.style.transform = 'translateY(-10px) rotateX(5deg)';
                 });
-                
-                card.addEventListener('mouseleave', function() {
+
+                card.addEventListener('mouseleave', function () {
                     this.style.transform = 'translateY(0) rotateX(0)';
                 });
             });
-            
+
             // Navbar background on scroll
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 const nav = document.querySelector('nav');
                 if (window.scrollY > 50) {
                     nav.classList.add('bg-white/95', 'backdrop-blur-md');
@@ -891,4 +1067,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     </script>
 </body>
+
 </html>
