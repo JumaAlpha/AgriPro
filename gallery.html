@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Agri-Pro Solutions CBO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2d5016',
+                        secondary: '#4a7c2a',
+                        accent: '#7cb342',
+                        light: '#f0f7e6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-hero {
+            background: linear-gradient(rgba(45, 80, 22, 0.85), rgba(45, 80, 22, 0.75)), url('Images/Agri_Pro_Team_At_Office_Compound.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .filter-button.active {
+            background: #2d5016;
+            color: white;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <div class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
+                    <a href="programs.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
+                    <a href="impact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
+                    <a href="gallery.html" class="text-primary font-medium">Gallery</a>
+                    <a href="get-involved.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get Involved</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
+                    <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                        Partner With Us
+                    </button>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-primary">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-primary">About</a>
+                <a href="programs.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Programs</a>
+                <a href="impact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Impact</a>
+                <a href="gallery.html" class="block px-3 py-2 text-primary font-medium">Gallery</a>
+                <a href="get-involved.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Get Involved</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Contact</a>
+                <button class="w-full mt-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary">
+                    Partner With Us
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-hero py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in">Our Gallery</h1>
+                <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
+                    Witness the impact of our work through images that tell the story of transformation in Rachuonyo North
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Filters -->
+    <section class="py-12 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 fade-in">
+                <h2 class="text-2xl font-bold text-primary mb-4">Explore Our Work</h2>
+                <p class="text-gray-600">Filter images by category to see specific aspects of our programs</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4 fade-in" style="transition-delay: 0.2s;">
+                <button class="filter-button active px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300" data-filter="all">
+                    All Photos
+                </button>
+                <button class="filter-button px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300" data-filter="team">
+                    <i class="fas fa-users mr-2"></i>Our Team
+                </button>
+                <button class="filter-button px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300" data-filter="training">
+                    <i class="fas fa-graduation-cap mr-2"></i>Training
+                </button>
+                <button class="filter-button px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300" data-filter="farming">
+                    <i class="fas fa-tractor mr-2"></i>Farming
+                </button>
+                <button class="filter-button px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300" data-filter="partnerships">
+                    <i class="fas fa-handshake mr-2"></i>Partnerships
+                </button>
+                <button class="filter-button px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300" data-filter="innovation">
+                    <i class="fas fa-lightbulb mr-2"></i>Innovation
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                
+                <!-- Team Photos -->
+                <div class="gallery-item team" data-category="team">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/Agri_Pro_Team_At_Office_Compound.jpg" alt="Agri-Pro Team at Office Compound" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Our Dedicated Team</h3>
+                            <p class="text-gray-600 text-sm">The Agri-Pro Solutions team working together at our office compound</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Photos -->
+                <div class="gallery-item training" data-category="training">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/On_Farm_Training_at_Demo_Plots.jpg" alt="On-Farm Training at Demo Plots" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Hands-on Training</h3>
+                            <p class="text-gray-600 text-sm">Farmers receiving practical training at our demonstration plots</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item training" data-category="training">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/Training_On_Money_Maker_Pumps_By_Kickstart International.jpg" alt="Training on Money Maker Pumps" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Irrigation Training</h3>
+                            <p class="text-gray-600 text-sm">Farmers learning irrigation techniques with KickStart International</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farming Photos -->
+                <div class="gallery-item farming" data-category="farming">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/Farmers_receiving_agro_forestry_in_Kendu_Town.jpg" alt="Farmers receiving agroforestry seedlings" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Agroforestry Distribution</h3>
+                            <p class="text-gray-600 text-sm">Farmers receiving tree seedlings in Kendu Town ward</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item farming" data-category="farming">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/Water_melon_Demo_Plot.jpg" alt="Watermelon Demo Plot" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Watermelon Demo Plot</h3>
+                            <p class="text-gray-600 text-sm">High-value crop demonstration for farmers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item farming" data-category="farming">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/Kales_Demo_Plot.jpg" alt="Kales Demo Plot" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Kales Demo Plot</h3>
+                            <p class="text-gray-600 text-sm">Leafy vegetable production demonstration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item farming" data-category="farming">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/Planting_Service_Kibiri_Ward.jpg" alt="Planting Service in Kibiri Ward" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Field Services</h3>
+                            <p class="text-gray-600 text-sm">Offering planting services to farmers in Kibiri Ward</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partnerships Photos -->
+                <div class="gallery-item partnerships" data-category="partnerships">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/EU_Delegation_Visit_with_Mr_Tito_Arunga.jpg" alt="EU Delegation Visit" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Partnership Engagement</h3>
+                            <p class="text-gray-600 text-sm">Meeting with EU delegation and Mr. Tito Arunga</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Innovation Photos -->
+                <div class="gallery-item innovation" data-category="innovation">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/BSF_Production_Unit_at_The_Office_Compound .jpg" alt="BSF Production Unit" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Waste to Wealth Innovation</h3>
+                            <p class="text-gray-600 text-sm">Black Soldier Fly production unit at our office compound</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item innovation" data-category="innovation">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/Tilapia_Fish_Pond_Kendu_bay.jpg" alt="Tilapia Fish Pond" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Aquaculture Innovation</h3>
+                            <p class="text-gray-600 text-sm">Tilapia fish pond at Kendu Bay showground</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item innovation" data-category="innovation">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/Cat_fish_pond_kendu_bay.jpg" alt="Cat Fish Pond" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Sustainable Aquaculture</h3>
+                            <p class="text-gray-600 text-sm">Cat fish pond at Kendu Bay showground</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item farming" data-category="farming">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                        <img src="Images/Dr_Martha_Planting_Tree_At_Office_Compond.jpg" alt="Tree Planting at Office Compound" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Environmental Conservation</h3>
+                            <p class="text-gray-600 text-sm">Tree planting activity at our office compound</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12 fade-in" style="transition-delay: 0.4s;">
+                <button id="load-more" class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                    Load More Photos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Impact in Numbers</h2>
+                <p class="text-xl text-light max-w-3xl mx-auto">
+                    The stories behind the images - measurable impact across Rachuonyo North
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center fade-in">
+                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">2,500+</div>
+                    <div class="text-light">Farmers Trained</div>
+                </div>
+                <div class="text-center fade-in" style="transition-delay: 0.1s;">
+                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">300+</div>
+                    <div class="text-light">Youth Empowered</div>
+                </div>
+                <div class="text-center fade-in" style="transition-delay: 0.2s;">
+                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">30,000+</div>
+                    <div class="text-light">Tree Seedlings</div>
+                </div>
+                <div class="text-center fade-in" style="transition-delay: 0.3s;">
+                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">7</div>
+                    <div class="text-light">Wards Reached</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-light">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6 fade-in">
+                Inspired by Our Work?
+            </h2>
+            <p class="text-xl text-gray-600 mb-8 fade-in" style="transition-delay: 0.2s;">
+                Join us in creating more success stories and transforming rural communities across Kenya.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
+                <a href="get-involved.html" class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                    Get Involved
+                </a>
+                <a href="contact.html" class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption" class="text-white text-center mt-4 text-lg"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
+                            APS
+                        </div>
+                        <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through agro-ecology, clean energy, and youth empowerment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Our Programs</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-accent transition-colors duration-300">About Us</a></li>
+                        <li><a href="impact.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Our Impact</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-accent"></i>
+                            Rachuonyo North, Kenya
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-accent"></i>
+                            +254 XXX XXX XXX
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent"></i>
+                            info@agriprosolutions.org
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 Agri-Pro Solutions Community Based Organization. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Gallery Filter Functionality
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Image Modal Functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const captionText = document.getElementById('modalCaption');
+        const closeBtn = document.querySelector('.close');
+
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Load More Functionality (placeholder)
+        document.getElementById('load-more').addEventListener('click', function() {
+            alert('More photos will be loaded as we continue our work! Check back soon for updates.');
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Initial check
+        fadeInOnScroll();
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/95', 'backdrop-blur-md');
+                nav.classList.remove('bg-white/90');
+            } else {
+                nav.classList.remove('bg-white/95');
+                nav.classList.add('bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>
