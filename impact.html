@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.67">
@@ -33,58 +34,74 @@
             background-size: cover;
             background-position: center;
         }
-        
+
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
-        
+
         @keyframes floating {
-            0% { transform: translate(0, 0px); }
-            50% { transform: translate(0, 15px); }
-            100% { transform: translate(0, -0px); }
+            0% {
+                transform: translate(0, 0px);
+            }
+
+            50% {
+                transform: translate(0, 15px);
+            }
+
+            100% {
+                transform: translate(0, -0px);
+            }
         }
-        
+
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
         }
-        
+
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .pulse-glow {
             animation: pulse-glow 2s infinite;
         }
-        
+
         @keyframes pulse-glow {
-            0% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
-            50% { box-shadow: 0 0 20px rgba(124, 179, 66, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+            0% {
+                box-shadow: 0 0 5px rgba(124, 179, 66, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(124, 179, 66, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(124, 179, 66, 0.4);
+            }
         }
-        
+
         .impact-card {
             transition: all 0.4s ease;
         }
-        
+
         .impact-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .counter {
             font-variant-numeric: tabular-nums;
         }
-        
+
         .progress-bar {
             background: linear-gradient(90deg, #2d5016, #4a7c2a);
             height: 8px;
             border-radius: 4px;
             transition: width 2s ease-in-out;
         }
-        
+
         .image-placeholder {
             background: linear-gradient(45deg, #f0f7e6, #e8f5e8);
             border: 2px dashed #7cb342;
@@ -96,6 +113,7 @@
         }
     </style>
 </head>
+
 <body class="font-sans bg-white">
     <!-- Navigation -->
     <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
@@ -103,25 +121,33 @@
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <a href="index.html" class="flex-shrink-0 flex items-center">
-                        <div class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        <div
+                            class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
                             APS
                         </div>
                         <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
                     </a>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
-                    <a href="about.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
-                    <a href="programs.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
+                    <a href="index.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
+                    <a href="about.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
+                    <a href="programs.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
                     <a href="impact.html" class="text-primary font-medium">Impact</a>
-                    <a href="get-involved.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get Involved</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
-                    <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                    <a href="get-involved.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get
+                        Involved</a>
+                    <a href="contact.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
+                    <button
+                        class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
                         Partner With Us
                     </button>
                 </div>
-                
+
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-primary">
                         <i class="fas fa-bars text-2xl"></i>
@@ -129,7 +155,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
@@ -151,10 +177,12 @@
             <div class="max-w-3xl">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in">Our Impact & Achievements</h1>
                 <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
-                    Measuring our progress in transforming rural livelihoods and building climate resilience across Rachuonyo North
+                    Measuring our progress in transforming rural livelihoods and building climate resilience across
+                    Homabay County
                 </p>
                 <div class="fade-in" style="transition-delay: 0.4s;">
-                    <a href="#impact-stats" class="bg-accent text-primary px-6 py-3 rounded-lg font-semibold hover:bg-white transition-all duration-300 transform hover:scale-105 inline-block">
+                    <a href="#impact-stats"
+                        class="bg-accent text-primary px-6 py-3 rounded-lg font-semibold hover:bg-white transition-all duration-300 transform hover:scale-105 inline-block">
                         View Our Results
                     </a>
                 </div>
@@ -168,30 +196,31 @@
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Transforming Lives in Numbers</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Our measurable impact across all seven wards of Rachuonyo North Sub-County
+                    Our measurable impact across Homabay County
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in">
-                    <div class="text-5xl font-bold text-primary mb-4 counter" data-target="2500">0</div>
-                    <h3 class="text-xl font-semibold text-primary mb-2">Farmers Trained</h3>
-                    <p class="text-gray-600">In agro-ecological practices and climate-resilient farming</p>
-                </div>
-                
-                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.1s;">
+                <div class="text-5xl font-bold text-primary mb-4 counter" data-target="3700">0</div>
+                <h3 class="text-xl font-semibold text-primary mb-2">Farmers Trained</h3>
+                <p class="text-gray-600">3,700 farmers trained on Agroecology sponsored by EU, IFAD, GOK with County
+                    Government and FAO as key implementors</p>
+                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in"
+                    style="transition-delay: 0.1s;">
                     <div class="text-5xl font-bold text-primary mb-4 counter" data-target="30000">0</div>
                     <h3 class="text-xl font-semibold text-primary mb-2">Tree Seedlings</h3>
                     <p class="text-gray-600">Distributed for agroforestry and environmental conservation</p>
                 </div>
-                
-                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.2s;">
+
+                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in"
+                    style="transition-delay: 0.2s;">
                     <div class="text-5xl font-bold text-primary mb-4 counter" data-target="300">0</div>
                     <h3 class="text-xl font-semibold text-primary mb-2">Youth Empowered</h3>
                     <p class="text-gray-600">With skills in sustainable agriculture and entrepreneurship</p>
                 </div>
-                
-                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.3s;">
+
+                <div class="impact-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in"
+                    style="transition-delay: 0.3s;">
                     <div class="text-5xl font-bold text-primary mb-4 counter" data-target="4400">0</div>
                     <h3 class="text-xl font-semibold text-primary mb-2">Kilograms Aggregated</h3>
                     <p class="text-gray-600">Of farm produce creating better market access for farmers</p>
@@ -210,9 +239,9 @@
                         <div class="w-full bg-gray-200 rounded-full h-3">
                             <div class="progress-bar h-3 rounded-full" style="width: 25%"></div>
                         </div>
-                        <p class="text-sm text-gray-600 mt-1">2,500 of 10,000 target farmers engaged</p>
+                        <p class="text-sm text-gray-600 mt-1">3000 of 10,000 target farmers engaged</p>
                     </div>
-                    
+
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="font-semibold text-gray-700">Youth Enterprises</span>
@@ -223,7 +252,7 @@
                         </div>
                         <p class="text-sm text-gray-600 mt-1">300 of 1,000 target youth-led businesses supported</p>
                     </div>
-                    
+
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="font-semibold text-gray-700">Clean Energy Adoption</span>
@@ -273,7 +302,8 @@
                         </div>
                     </div>
                     <div class="mt-6 p-4 bg-primary/10 rounded-lg">
-                        <p class="text-primary font-semibold">"Soil organic matter increased by 35% in demonstration farms"</p>
+                        <p class="text-primary font-semibold">"Soil organic matter increased by 35% in demonstration
+                            farms"</p>
                     </div>
                 </div>
 
@@ -300,7 +330,8 @@
                         </div>
                     </div>
                     <div class="mt-6 p-4 bg-primary/10 rounded-lg">
-                        <p class="text-primary font-semibold">"Farmers received 15-20% higher prices through collective marketing"</p>
+                        <p class="text-primary font-semibold">"Farmers received 15-20% higher prices through collective
+                            marketing"</p>
                     </div>
                 </div>
 
@@ -350,7 +381,7 @@
                         </div>
                         <div class="flex justify-between items-center p-4 bg-white rounded-lg">
                             <span class="font-semibold">Communities Reached</span>
-                            <span class="text-primary font-bold text-xl">7 Wards</span>
+                            <span class="text-primary font-bold text-xl">8 Sub-Counties</span>
                         </div>
                     </div>
                     <div class="mt-6 p-4 bg-primary/10 rounded-lg">
@@ -380,9 +411,11 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">From Unemployment to Agri-business Owner</h3>
-                    <p class="text-light mb-4">"After training in BSF production, I started my own animal feed enterprise. I now employ 3 other youth and supply feed to 15 local farmers."</p>
+                    <p class="text-light mb-4">"After training in BSF production, I started my own animal feed
+                        enterprise. I now employ 3 other youth and supply feed to 15 local farmers."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold mr-3">
+                        <div
+                            class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold mr-3">
                             JK
                         </div>
                         <div>
@@ -400,9 +433,11 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">Tripling Income Through Irrigation</h3>
-                    <p class="text-light mb-4">"The Money-Maker pump transformed my farming. I now grow vegetables year-round and my income has increased from KES 15,000 to KES 45,000 per season."</p>
+                    <p class="text-light mb-4">"The Money-Maker pump transformed my farming. I now grow vegetables
+                        year-round and my income has increased from KES 15,000 to KES 45,000 per season."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold mr-3">
+                        <div
+                            class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold mr-3">
                             MN
                         </div>
                         <div>
@@ -420,9 +455,11 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold mb-4">Restoring Degraded Land</h3>
-                    <p class="text-light mb-4">"Through agroforestry training, we've transformed our barren family land. The trees provide shade, improve soil, and give us additional income from fruits."</p>
+                    <p class="text-light mb-4">"Through agroforestry training, we've transformed our barren family land.
+                        The trees provide shade, improve soil, and give us additional income from fruits."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold mr-3">
+                        <div
+                            class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold mr-3">
                             RO
                         </div>
                         <div>
@@ -523,7 +560,8 @@
                         <i class="fas fa-users text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-primary mb-4">Scale Reach</h3>
-                    <p class="text-gray-600">Expand to 10,000+ farmers with agro-ecology and irrigation solutions across multiple counties</p>
+                    <p class="text-gray-600">Expand to 10,000+ farmers with agro-ecology and irrigation solutions across
+                        multiple counties</p>
                 </div>
 
                 <div class="text-center p-8 fade-in" style="transition-delay: 0.2s;">
@@ -531,7 +569,8 @@
                         <i class="fas fa-industry text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-primary mb-4">Enterprise Growth</h3>
-                    <p class="text-gray-600">Establish 1,000 youth-led agribusinesses in green and digital farming technologies</p>
+                    <p class="text-gray-600">Establish 1,000 youth-led agribusinesses in green and digital farming
+                        technologies</p>
                 </div>
 
                 <div class="text-center p-8 fade-in" style="transition-delay: 0.4s;">
@@ -539,12 +578,14 @@
                         <i class="fas fa-bolt text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-primary mb-4">Energy Access</h3>
-                    <p class="text-gray-600">Enable 50,000+ households to adopt clean energy solutions for cooking and farming</p>
+                    <p class="text-gray-600">Enable 50,000+ households to adopt clean energy solutions for cooking and
+                        farming</p>
                 </div>
             </div>
 
             <div class="text-center mt-12 fade-in" style="transition-delay: 0.6s;">
-                <a href="get-involved.html" class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 inline-block">
+                <a href="get-involved.html"
+                    class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 inline-block">
                     Help Us Achieve These Goals
                 </a>
             </div>
@@ -557,13 +598,15 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
                     <div class="flex items-center mb-4">
-                        <div class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
+                        <div
+                            class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
                             APS
                         </div>
                         <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
                     </div>
                     <p class="text-gray-300 mb-4">
-                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through agro-ecology, clean energy, and youth empowerment.
+                        Empowering Rural Regeneration & Climate Resilience in Homabay County, Kenya through
+                        agro-ecology, clean energy, and youth empowerment.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
@@ -580,17 +623,22 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Our Work</h3>
                     <ul class="space-y-2">
-                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Programs</a></li>
-                        <li><a href="impact.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Impact</a></li>
-                        <li><a href="gallery.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Gallery</a></li>
-                        <li><a href="get-involved.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Get Involved</a></li>
+                        <li><a href="programs.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Programs</a></li>
+                        <li><a href="impact.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Impact</a></li>
+                        <li><a href="gallery.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Gallery</a></li>
+                        <li><a href="get-involved.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Get Involved</a>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
                     <ul class="space-y-2 text-gray-300">
@@ -600,7 +648,7 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone mr-3 text-accent"></i>
-                            +254 XXX XXX XXX
+                            +254 715 581924
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-accent"></i>
@@ -609,7 +657,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
                 <p>&copy; 2025 Agri-Pro Solutions Community Based Organization. All rights reserved.</p>
             </div>
@@ -618,7 +666,7 @@
 
     <script>
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
@@ -626,13 +674,13 @@
         // Counter animation
         function animateCounters() {
             const counters = document.querySelectorAll('.counter');
-            
+
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
                 const duration = 2000;
                 const step = target / (duration / 16);
                 let current = 0;
-                
+
                 const updateCounter = () => {
                     current += step;
                     if (current < target) {
@@ -642,7 +690,7 @@
                         counter.innerText = target.toLocaleString();
                     }
                 };
-                
+
                 ScrollTrigger.create({
                     trigger: counter,
                     start: "top 80%",
@@ -654,31 +702,31 @@
 
         // Initialize GSAP animations
         gsap.registerPlugin(ScrollTrigger);
-        
+
         // Fade in animation for elements with class 'fade-in'
         gsap.utils.toArray('.fade-in').forEach(element => {
-            gsap.fromTo(element, 
-                { opacity: 0, y: 50 },
-                { 
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 0.8, 
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    }
+            gsap.fromTo(element, {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
                 }
-            );
+            });
         });
 
         // Initialize animations when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             animateCounters();
-            
+
             // Navbar background on scroll
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 const nav = document.querySelector('nav');
                 if (window.scrollY > 50) {
                     nav.classList.add('bg-white/95', 'backdrop-blur-md');
@@ -691,4 +739,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.67">
@@ -32,71 +33,94 @@
             background-size: cover;
             background-position: center;
         }
-        
+
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
-        
+
         @keyframes floating {
-            0% { transform: translate(0, 0px); }
-            50% { transform: translate(0, 15px); }
-            100% { transform: translate(0, -0px); }
+            0% {
+                transform: translate(0, 0px);
+            }
+
+            50% {
+                transform: translate(0, 15px);
+            }
+
+            100% {
+                transform: translate(0, -0px);
+            }
         }
-        
+
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
         }
-        
+
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .pulse-glow {
             animation: pulse-glow 2s infinite;
         }
-        
+
         @keyframes pulse-glow {
-            0% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
-            50% { box-shadow: 0 0 20px rgba(124, 179, 66, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.4); }
+            0% {
+                box-shadow: 0 0 5px rgba(124, 179, 66, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(124, 179, 66, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(124, 179, 66, 0.4);
+            }
         }
-        
+
         .involvement-card {
             transition: all 0.4s ease;
         }
-        
+
         .involvement-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .tab-content {
             display: none;
         }
-        
+
         .tab-content.active {
             display: block;
             animation: fadeIn 0.5s ease;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .tab-button.active {
             background: #2d5016;
             color: white;
         }
-        
+
         .form-input:focus {
             border-color: #7cb342;
             box-shadow: 0 0 0 3px rgba(124, 179, 66, 0.1);
         }
-        
+
         .image-placeholder {
             background: linear-gradient(45deg, #f0f7e6, #e8f5e8);
             border: 2px dashed #7cb342;
@@ -108,6 +132,7 @@
         }
     </style>
 </head>
+
 <body class="font-sans bg-white">
     <!-- Navigation -->
     <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
@@ -115,25 +140,32 @@
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <a href="index.html" class="flex-shrink-0 flex items-center">
-                        <div class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        <div
+                            class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
                             APS
                         </div>
                         <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
                     </a>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
-                    <a href="about.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
-                    <a href="programs.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
-                    <a href="impact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
+                    <a href="index.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
+                    <a href="about.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
+                    <a href="programs.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
+                    <a href="impact.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
                     <a href="get-involved.html" class="text-primary font-medium">Get Involved</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
-                    <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                    <a href="contact.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
+                    <button
+                        class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
                         Partner With Us
                     </button>
                 </div>
-                
+
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-primary">
                         <i class="fas fa-bars text-2xl"></i>
@@ -141,7 +173,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
@@ -163,10 +195,12 @@
             <div class="max-w-3xl">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in">Join Our Movement</h1>
                 <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
-                    Together, we can scale climate-resilient agriculture and empower rural communities across Kenya
+                    Together, we can scale climate-resilient agriculture and empower rural communities across Homabay
+                    County, Kenya
                 </p>
                 <div class="fade-in" style="transition-delay: 0.4s;">
-                    <a href="#ways-to-help" class="bg-accent text-primary px-6 py-3 rounded-lg font-semibold hover:bg-white transition-all duration-300 transform hover:scale-105 inline-block">
+                    <a href="#ways-to-help"
+                        class="bg-accent text-primary px-6 py-3 rounded-lg font-semibold hover:bg-white transition-all duration-300 transform hover:scale-105 inline-block">
                         Explore Opportunities
                     </a>
                 </div>
@@ -187,48 +221,64 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Partnership -->
                 <div class="involvement-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
+                    <div
+                        class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
                         <i class="fas fa-handshake text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-primary mb-4">Strategic Partnership</h3>
-                    <p class="text-gray-600 mb-6">Join as a corporate, institutional, or organizational partner to scale our impact</p>
-                    <button class="tab-button bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 w-full" data-tab="partnership">
+                    <p class="text-gray-600 mb-6">Join as a corporate, institutional, or organizational partner to scale
+                        our impact</p>
+                    <button
+                        class="tab-button bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 w-full"
+                        data-tab="partnership">
                         Learn More
                     </button>
                 </div>
 
                 <!-- Donation -->
-                <div class="involvement-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.1s;">
-                    <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
+                <div class="involvement-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in"
+                    style="transition-delay: 0.1s;">
+                    <div
+                        class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
                         <i class="fas fa-donate text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-primary mb-4">Make a Donation</h3>
                     <p class="text-gray-600 mb-6">Support our programs with financial contributions of any size</p>
-                    <button class="tab-button bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 w-full" data-tab="donation">
+                    <button
+                        class="tab-button bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 w-full"
+                        data-tab="donation">
                         Donate Now
                     </button>
                 </div>
 
                 <!-- Volunteer -->
-                <div class="involvement-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.2s;">
-                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
+                <div class="involvement-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in"
+                    style="transition-delay: 0.2s;">
+                    <div
+                        class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
                         <i class="fas fa-hands-helping text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-primary mb-4">Volunteer</h3>
                     <p class="text-gray-600 mb-6">Share your skills and time to support our community programs</p>
-                    <button class="tab-button bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 w-full" data-tab="volunteer">
+                    <button
+                        class="tab-button bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 w-full"
+                        data-tab="volunteer">
                         Volunteer
                     </button>
                 </div>
 
                 <!-- Expertise -->
-                <div class="involvement-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in" style="transition-delay: 0.3s;">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
+                <div class="involvement-card bg-white rounded-2xl p-8 text-center shadow-lg fade-in"
+                    style="transition-delay: 0.3s;">
+                    <div
+                        class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 pulse-glow">
                         <i class="fas fa-graduation-cap text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-primary mb-4">Share Expertise</h3>
                     <p class="text-gray-600 mb-6">Provide technical assistance, training, or mentorship</p>
-                    <button class="tab-button bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 w-full" data-tab="expertise">
+                    <button
+                        class="tab-button bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 w-full"
+                        data-tab="expertise">
                         Offer Help
                     </button>
                 </div>
@@ -245,26 +295,29 @@
                     <div class="fade-in">
                         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Strategic Partnerships</h2>
                         <p class="text-lg text-gray-600 mb-8">
-                            Join our network of partners who are committed to sustainable rural development and climate resilience in Kenya.
+                            Join our network of partners who are committed to sustainable rural development and climate
+                            resilience in Kenya.
                         </p>
-                        
+
                         <div class="space-y-6 mb-8">
                             <div class="flex items-start">
                                 <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
                                 <div>
                                     <h4 class="font-semibold text-primary mb-2">Corporate Partnerships</h4>
-                                    <p class="text-gray-600">CSR initiatives, employee volunteering, and sustainable supply chain development</p>
+                                    <p class="text-gray-600">CSR initiatives, employee volunteering, and sustainable
+                                        supply chain development</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-start">
                                 <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
                                 <div>
                                     <h4 class="font-semibold text-primary mb-2">Institutional Partnerships</h4>
-                                    <p class="text-gray-600">Research collaboration, program funding, and policy advocacy</p>
+                                    <p class="text-gray-600">Research collaboration, program funding, and policy
+                                        advocacy</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-start">
                                 <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
                                 <div>
@@ -273,7 +326,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="bg-primary/10 p-6 rounded-lg border-l-4 border-primary">
                             <h4 class="font-semibold text-primary mb-2">Current Partnership Needs:</h4>
                             <ul class="text-gray-600 space-y-1">
@@ -284,26 +337,30 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="fade-in" style="transition-delay: 0.3s;">
                         <div class="bg-light rounded-2xl p-8">
                             <h3 class="text-2xl font-bold text-primary mb-6">Become a Partner</h3>
                             <form class="space-y-4">
                                 <div>
                                     <label class="block text-gray-700 mb-2">Organization Name</label>
-                                    <input type="text" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <input type="text"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Contact Person</label>
-                                    <input type="text" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <input type="text"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Email</label>
-                                    <input type="email" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <input type="email"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Partnership Interest</label>
-                                    <select class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <select
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                         <option>Corporate Sponsorship</option>
                                         <option>Technical Assistance</option>
                                         <option>Equipment Donation</option>
@@ -313,9 +370,11 @@
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Message</label>
-                                    <textarea rows="4" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent"></textarea>
+                                    <textarea rows="4"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent"></textarea>
                                 </div>
-                                <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
+                                <button type="submit"
+                                    class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
                                     Submit Partnership Inquiry
                                 </button>
                             </form>
@@ -330,9 +389,10 @@
                     <div class="fade-in">
                         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Support Our Work</h2>
                         <p class="text-lg text-gray-600 mb-8">
-                            Your donation directly supports farmers, empowers youth, and builds climate resilience in rural Kenya.
+                            Your donation directly supports farmers, empowers youth, and builds climate resilience in
+                            rural Kenya.
                         </p>
-                        
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-light rounded-lg p-6 text-center">
                                 <div class="text-2xl font-bold text-primary mb-2">KES 5,000</div>
@@ -351,7 +411,7 @@
                                 <p class="text-gray-600 text-sm">Funds BSF production unit</p>
                             </div>
                         </div>
-                        
+
                         <div class="bg-primary/10 p-6 rounded-lg border-l-4 border-primary">
                             <h4 class="font-semibold text-primary mb-2">Donation Impact Areas:</h4>
                             <ul class="text-gray-600 space-y-1">
@@ -363,31 +423,39 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="fade-in" style="transition-delay: 0.3s;">
                         <div class="bg-light rounded-2xl p-8">
                             <h3 class="text-2xl font-bold text-primary mb-6">Make a Donation</h3>
                             <form class="space-y-4">
                                 <div>
                                     <label class="block text-gray-700 mb-2">Donation Amount (KES)</label>
-                                    <input type="number" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent" placeholder="Enter amount">
+                                    <input type="number"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent"
+                                        placeholder="Enter amount">
                                 </div>
                                 <div class="grid grid-cols-3 gap-2">
-                                    <button type="button" class="bg-white border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">1,000</button>
-                                    <button type="button" class="bg-white border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">5,000</button>
-                                    <button type="button" class="bg-white border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">10,000</button>
+                                    <button type="button"
+                                        class="bg-white border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">1,000</button>
+                                    <button type="button"
+                                        class="bg-white border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">5,000</button>
+                                    <button type="button"
+                                        class="bg-white border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">10,000</button>
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Full Name</label>
-                                    <input type="text" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <input type="text"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Email</label>
-                                    <input type="email" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <input type="email"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Designate Donation To</label>
-                                    <select class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <select
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                         <option>Where most needed</option>
                                         <option>Youth Empowerment</option>
                                         <option>Agro-ecology Training</option>
@@ -396,7 +464,8 @@
                                         <option>BSF Innovation</option>
                                     </select>
                                 </div>
-                                <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
+                                <button type="submit"
+                                    class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
                                     Proceed to Payment
                                 </button>
                             </form>
@@ -411,35 +480,39 @@
                     <div class="fade-in">
                         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Volunteer With Us</h2>
                         <p class="text-lg text-gray-600 mb-8">
-                            Share your time and skills to make a direct impact in rural communities. We welcome both local and international volunteers.
+                            Share your time and skills to make a direct impact in rural communities. We welcome both
+                            local and international volunteers.
                         </p>
-                        
+
                         <div class="space-y-6 mb-8">
                             <div class="flex items-start">
                                 <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
                                 <div>
                                     <h4 class="font-semibold text-primary mb-2">Field Volunteers</h4>
-                                    <p class="text-gray-600">Help with farming activities, training sessions, and community outreach</p>
+                                    <p class="text-gray-600">Help with farming activities, training sessions, and
+                                        community outreach</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-start">
                                 <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
                                 <div>
                                     <h4 class="font-semibold text-primary mb-2">Skills-Based Volunteers</h4>
-                                    <p class="text-gray-600">Marketing, IT, accounting, monitoring & evaluation support</p>
+                                    <p class="text-gray-600">Marketing, IT, accounting, monitoring & evaluation support
+                                    </p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-start">
                                 <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
                                 <div>
                                     <h4 class="font-semibold text-primary mb-2">Research Volunteers</h4>
-                                    <p class="text-gray-600">Data collection, impact assessment, and program evaluation</p>
+                                    <p class="text-gray-600">Data collection, impact assessment, and program evaluation
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="bg-primary/10 p-6 rounded-lg">
                             <h4 class="font-semibold text-primary mb-2">Volunteer Requirements:</h4>
                             <ul class="text-gray-600 space-y-1">
@@ -450,26 +523,30 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="fade-in" style="transition-delay: 0.3s;">
                         <div class="bg-light rounded-2xl p-8">
                             <h3 class="text-2xl font-bold text-primary mb-6">Volunteer Application</h3>
                             <form class="space-y-4">
                                 <div>
                                     <label class="block text-gray-700 mb-2">Full Name</label>
-                                    <input type="text" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <input type="text"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Email</label>
-                                    <input type="email" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <input type="email"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Phone</label>
-                                    <input type="tel" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <input type="tel"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Volunteer Interest</label>
-                                    <select class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <select
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                         <option>Field Volunteer</option>
                                         <option>Skills-Based Volunteer</option>
                                         <option>Research Volunteer</option>
@@ -478,13 +555,18 @@
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Skills & Experience</label>
-                                    <textarea rows="4" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent" placeholder="Please describe your relevant skills and experience..."></textarea>
+                                    <textarea rows="4"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent"
+                                        placeholder="Please describe your relevant skills and experience..."></textarea>
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Availability</label>
-                                    <input type="text" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent" placeholder="Preferred dates and duration">
+                                    <input type="text"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent"
+                                        placeholder="Preferred dates and duration">
                                 </div>
-                                <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
+                                <button type="submit"
+                                    class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
                                     Submit Application
                                 </button>
                             </form>
@@ -499,18 +581,20 @@
                     <div class="fade-in">
                         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Share Your Expertise</h2>
                         <p class="text-lg text-gray-600 mb-8">
-                            Your specialized knowledge can help us improve our programs and scale our impact more effectively.
+                            Your specialized knowledge can help us improve our programs and scale our impact more
+                            effectively.
                         </p>
-                        
+
                         <div class="space-y-6 mb-8">
                             <div class="flex items-start">
                                 <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
                                 <div>
                                     <h4 class="font-semibold text-primary mb-2">Technical Experts</h4>
-                                    <p class="text-gray-600">Agronomy, aquaculture, renewable energy, waste management</p>
+                                    <p class="text-gray-600">Agronomy, aquaculture, renewable energy, waste management
+                                    </p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-start">
                                 <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
                                 <div>
@@ -518,7 +602,7 @@
                                     <p class="text-gray-600">Enterprise development, marketing, financial management</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-start">
                                 <div class="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1 mr-4"></div>
                                 <div>
@@ -527,7 +611,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="bg-primary/10 p-6 rounded-lg">
                             <h4 class="font-semibold text-primary mb-2">Current Expertise Needs:</h4>
                             <ul class="text-gray-600 space-y-1">
@@ -539,22 +623,25 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="fade-in" style="transition-delay: 0.3s;">
                         <div class="bg-light rounded-2xl p-8">
                             <h3 class="text-2xl font-bold text-primary mb-6">Offer Your Expertise</h3>
                             <form class="space-y-4">
                                 <div>
                                     <label class="block text-gray-700 mb-2">Full Name</label>
-                                    <input type="text" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <input type="text"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Email</label>
-                                    <input type="email" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <input type="email"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Area of Expertise</label>
-                                    <select class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <select
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                         <option>Agricultural Technology</option>
                                         <option>Business Development</option>
                                         <option>Digital Solutions</option>
@@ -565,22 +652,28 @@
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Professional Background</label>
-                                    <textarea rows="3" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent" placeholder="Briefly describe your professional background..."></textarea>
+                                    <textarea rows="3"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent"
+                                        placeholder="Briefly describe your professional background..."></textarea>
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">How can you help?</label>
-                                    <textarea rows="4" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent" placeholder="Describe how you can contribute to our work..."></textarea>
+                                    <textarea rows="4"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent"
+                                        placeholder="Describe how you can contribute to our work..."></textarea>
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 mb-2">Availability</label>
-                                    <select class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    <select
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
                                         <option>Remote consultation</option>
                                         <option>Short-term project</option>
                                         <option>Ongoing advisory</option>
                                         <option>In-person training</option>
                                     </select>
                                 </div>
-                                <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
+                                <button type="submit"
+                                    class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
                                     Submit Offer
                                 </button>
                             </form>
@@ -679,7 +772,8 @@
             </div>
 
             <div class="text-center mt-12 fade-in" style="transition-delay: 0.6s;">
-                <a href="contact.html" class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 inline-block">
+                <a href="contact.html"
+                    class="bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white transition-all duration-300 transform hover:scale-105 inline-block">
                     Contact Us About Specific Needs
                 </a>
             </div>
@@ -692,13 +786,15 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
                     <div class="flex items-center mb-4">
-                        <div class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
+                        <div
+                            class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
                             APS
                         </div>
                         <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
                     </div>
                     <p class="text-gray-300 mb-4">
-                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through agro-ecology, clean energy, and youth empowerment.
+                        Empowering Rural Regeneration & Climate Resilience in Homabay County, Kenya through
+                        agro-ecology, clean energy, and youth empowerment.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
@@ -715,23 +811,30 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Get Involved</h3>
                     <ul class="space-y-2">
-                        <li><a href="get-involved.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Partnership</a></li>
-                        <li><a href="get-involved.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Donate</a></li>
-                        <li><a href="get-involved.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Volunteer</a></li>
-                        <li><a href="get-involved.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Share Expertise</a></li>
+                        <li><a href="get-involved.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Partnership</a>
+                        </li>
+                        <li><a href="get-involved.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Donate</a></li>
+                        <li><a href="get-involved.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Volunteer</a>
+                        </li>
+                        <li><a href="get-involved.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Share
+                                Expertise</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
                     <ul class="space-y-2 text-gray-300">
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt mr-3 text-accent"></i>
-                            Rachuonyo North, Kenya
+                            Homabay County, Kenya
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone mr-3 text-accent"></i>
@@ -744,7 +847,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
                 <p>&copy; 2025 Agri-Pro Solutions Community Based Organization. All rights reserved.</p>
             </div>
@@ -753,25 +856,26 @@
 
     <script>
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
 
         // Tab functionality
         document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 // Remove active class from all buttons and contents
                 document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove(
+                    'active'));
+
                 // Add active class to clicked button
                 this.classList.add('active');
-                
+
                 // Show corresponding content
                 const tabId = this.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
-                
+
                 // Scroll to the content
                 document.getElementById(tabId).scrollIntoView({
                     behavior: 'smooth',
@@ -782,27 +886,27 @@
 
         // Initialize GSAP animations
         gsap.registerPlugin(ScrollTrigger);
-        
+
         // Fade in animation for elements with class 'fade-in'
         gsap.utils.toArray('.fade-in').forEach(element => {
-            gsap.fromTo(element, 
-                { opacity: 0, y: 50 },
-                { 
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 0.8, 
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    }
+            gsap.fromTo(element, {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
                 }
-            );
+            });
         });
 
         // Navbar background on scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
                 nav.classList.add('bg-white/95', 'backdrop-blur-md');
@@ -816,7 +920,7 @@
         // Quick donation amount buttons
         document.querySelectorAll('button[type="button"]').forEach(button => {
             if (button.textContent.match(/KES/)) {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const amount = this.textContent.replace('KES ', '').replace(',', '');
                     const input = this.closest('form').querySelector('input[type="number"]');
                     input.value = amount;
@@ -825,4 +929,5 @@
         });
     </script>
 </body>
+
 </html>

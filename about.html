@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,39 +33,47 @@
             background-size: cover;
             background-position: center;
         }
-        
+
         .glassmorphism {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
         }
-        
+
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
-        
+
         @keyframes floating {
-            0% { transform: translate(0, 0px); }
-            50% { transform: translate(0, 15px); }
-            100% { transform: translate(0, -0px); }
+            0% {
+                transform: translate(0, 0px);
+            }
+
+            50% {
+                transform: translate(0, 15px);
+            }
+
+            100% {
+                transform: translate(0, -0px);
+            }
         }
-        
+
         .timeline-item {
             position: relative;
             padding-left: 2rem;
         }
-        
+
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -75,7 +84,7 @@
             background: #7cb342;
             border-radius: 50%;
         }
-        
+
         .timeline-item::after {
             content: '';
             position: absolute;
@@ -85,12 +94,13 @@
             height: calc(100% - 1rem);
             background: #7cb342;
         }
-        
+
         .timeline-item:last-child::after {
             display: none;
         }
     </style>
 </head>
+
 <body class="font-sans bg-white">
     <!-- Navigation -->
     <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
@@ -98,25 +108,33 @@
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <a href="index.html" class="flex-shrink-0 flex items-center">
-                        <div class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        <div
+                            class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
                             APS
                         </div>
                         <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
                     </a>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
+                    <a href="index.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
                     <a href="about.html" class="text-primary font-medium">About</a>
-                    <a href="programs.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
-                    <a href="impact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
-                    <a href="get-involved.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get Involved</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
-                    <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                    <a href="programs.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
+                    <a href="impact.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
+                    <a href="get-involved.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Get
+                        Involved</a>
+                    <a href="contact.html"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
+                    <button
+                        class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
                         Partner With Us
                     </button>
                 </div>
-                
+
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-primary">
                         <i class="fas fa-bars text-2xl"></i>
@@ -124,7 +142,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
@@ -146,7 +164,8 @@
             <div class="max-w-3xl">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in">About Agri-Pro Solutions</h1>
                 <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
-                    Building a model of hope in Rachuonyo North through agro-ecology, youth empowerment, and climate resilience.
+                    Building a model of hope in Homabay County through agro-ecology, youth empowerment, and climate
+                    resilience.
                 </p>
             </div>
         </div>
@@ -159,27 +178,38 @@
                 <div class="fade-in">
                     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Our Story</h2>
                     <p class="text-lg text-gray-600 mb-6">
-                        In Rachuonyo North, smallholder farmers face the daily realities of climate change: erratic rains, depleted soils, high energy costs, and shrinking opportunities for youth. Yet, from this challenge, <span class="text-primary font-semibold">Agri-Pro Solutions CBO has built a model of hope</span>—one that is restoring the land, empowering young people, and creating climate-smart livelihoods.
+                        In Homabay County, smallholder farmers face the daily realities of climate change: erratic
+                        rains, depleted soils, high energy costs, and shrinking opportunities for youth. Yet, from this
+                        challenge, <span class="text-primary font-semibold">Agri-Pro Solutions CBO has built a model of
+                            hope</span>—one that is restoring the land, empowering young people, and creating
+                        climate-smart livelihoods.
                     </p>
                     <p class="text-lg text-gray-600 mb-6">
-                        Led by committed youths drawn from across the sub-county under the chairmanship of <span class="text-primary font-semibold">Mr. Ben Blasto Nyagol</span>, our community-based organization places agro-ecology, farm produce aggregation & marketing, clean energy, and innovation at the heart of rural transformation.
+                        Led by committed youths drawn from across the sub-county under the chairmanship of <span
+                            class="text-primary font-semibold">Mr. Ben Blasto Nyagol</span>, our community-based
+                        organization places agro-ecology, farm produce aggregation & marketing, clean energy, and
+                        innovation at the heart of rural transformation.
                     </p>
                     <p class="text-lg text-gray-600">
-                        Today, our integrated approach is reaching <span class="text-primary font-semibold">all seven wards of the sub-county</span>, directly improving the lives of thousands of families through sustainable agricultural practices and community empowerment.
+                        Today, our integrated approach is reaching <span class="text-primary font-semibold">across
+                            Homabay County</span>, directly improving the lives of thousands of families through
+                        sustainable agricultural practices and community empowerment.
                     </p>
                 </div>
                 <div class="relative fade-in" style="transition-delay: 0.3s;">
                     <div class="bg-white rounded-2xl p-6 shadow-lg">
-                        <img src="Images/On_Farm_Training_at_Demo_Plots.jpg" alt="Agri-Pro Solutions team working with farmers in Rachuonyo North" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <img src="Images/On_Farm_Training_at_Demo_Plots.jpg"
+                            alt="Agri-Pro Solutions team working with farmers in Rachuonyo North"
+                            class="w-full h-64 object-cover rounded-lg mb-4">
                         <p class="text-gray-600 text-sm italic">Our team engaging with farmers in the field</p>
                     </div>
                     <div class="grid grid-cols-2 gap-4 mt-6">
                         <div class="text-center p-4 bg-light rounded-lg shadow-md">
-                            <div class="text-3xl font-bold text-primary mb-2">7</div>
-                            <div class="text-gray-600">Wards Reached</div>
+                            <div class="text-3xl font-bold text-primary mb-2">8</div>
+                            <div class="text-gray-600">Sub-counties Reached</div>
                         </div>
                         <div class="text-center p-4 bg-light rounded-lg shadow-md">
-                            <div class="text-3xl font-bold text-primary mb-2">2,500+</div>
+                            <div class="text-3xl font-bold text-primary mb-2">3700+</div>
                             <div class="text-gray-600">Farmers Trained</div>
                         </div>
                         <div class="text-center p-4 bg-light rounded-lg shadow-md">
@@ -193,7 +223,8 @@
                     </div>
                     <!-- Floating elements -->
                     <div class="absolute -top-4 -right-4 w-8 h-8 bg-accent rounded-full floating"></div>
-                    <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary rounded-full floating" style="animation-delay: 1s;"></div>
+                    <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary rounded-full floating"
+                        style="animation-delay: 1s;"></div>
                 </div>
             </div>
         </div>
@@ -208,7 +239,7 @@
                     Guided by our core purpose and aspirations for the future
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-2xl p-8 shadow-lg fade-in">
                     <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6">
@@ -216,25 +247,32 @@
                     </div>
                     <h3 class="text-2xl font-bold text-primary mb-4">Our Mission</h3>
                     <p class="text-gray-600 text-lg">
-                        To empower rural communities in Rachuonyo North through integrated agro-ecological practices, clean energy solutions, and youth entrepreneurship, building climate resilience and sustainable livelihoods while restoring environmental health.
+                        To empower rural communities in Rachuonyo North through integrated agro-ecological practices,
+                        clean energy solutions, and youth entrepreneurship, building climate resilience and sustainable
+                        livelihoods while restoring environmental health.
                     </p>
                 </div>
-                
+
                 <div class="bg-white rounded-2xl p-8 shadow-lg fade-in" style="transition-delay: 0.2s;">
                     <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-eye text-white text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-primary mb-4">Our Vision</h3>
                     <p class="text-gray-600 text-lg">
-                        A transformed Rachuonyo North where thriving rural communities practice climate-smart agriculture, youth are empowered as agri-preneurs, and sustainable ecosystems support prosperous livelihoods for generations to come.
+                        A transformed Rachuonyo North where thriving rural communities practice climate-smart
+                        agriculture, youth are empowered as agri-preneurs, and sustainable ecosystems support prosperous
+                        livelihoods for generations to come.
                     </p>
                 </div>
-                
+
                 <div class="bg-white rounded-2xl p-8 shadow-lg fade-in" style="transition-delay: 0.4s;">
-                    <img src="Images/Farmers_receiving_agro_forestry_in_Kendu_Town.jpg" alt="Sustainable farming practices in Rachuonyo North" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="Images/Farmers_receiving_agro_forestry_in_Kendu_Town.jpg"
+                        alt="Sustainable farming practices in Rachuonyo North"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-2xl font-bold text-primary mb-4">In Action</h3>
                     <p class="text-gray-600 text-lg">
-                        Our mission comes to life through hands-on training, community engagement, and sustainable agricultural practices that transform lives and landscapes.
+                        Our mission comes to life through hands-on training, community engagement, and sustainable
+                        agricultural practices that transform lives and landscapes.
                     </p>
                 </div>
             </div>
@@ -250,37 +288,46 @@
                     The principles that guide our work and define our approach
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="text-center p-6 fade-in">
-                    <img src="Images/Dr_Martha_Planting_Tree_At_Office_Compond.jpg" alt="Sustainable farming practices" class="w-20 h-20 object-cover rounded-full mx-auto mb-4">
+                    <img src="Images/Dr_Martha_Planting_Tree_At_Office_Compond.jpg" alt="Sustainable farming practices"
+                        class="w-20 h-20 object-cover rounded-full mx-auto mb-4">
                     <h3 class="text-xl font-semibold text-primary mb-4">Sustainability</h3>
                     <p class="text-gray-600">
-                        Commitment to environmental stewardship and long-term solutions that benefit both people and the planet.
+                        Commitment to environmental stewardship and long-term solutions that benefit both people and the
+                        planet.
                     </p>
                 </div>
-                
+
                 <div class="text-center p-6 fade-in" style="transition-delay: 0.1s;">
-                    <img src="Images/Training_On_Money_Maker_Pumps_By_Kickstart International.jpg" alt="Community empowerment and training" class="w-20 h-20 object-cover rounded-full mx-auto mb-4">
+                    <img src="Images/Training_On_Money_Maker_Pumps_By_Kickstart International.jpg"
+                        alt="Community empowerment and training"
+                        class="w-20 h-20 object-cover rounded-full mx-auto mb-4">
                     <h3 class="text-xl font-semibold text-primary mb-4">Empowerment</h3>
                     <p class="text-gray-600">
                         Building capacity and creating opportunities for youth and farmers to become agents of change.
                     </p>
                 </div>
-                
+
                 <div class="text-center p-6 fade-in" style="transition-delay: 0.2s;">
-                    <img src="Images/BSF_Production_Unit_at_The_Office_Compound .jpg" alt="Innovative agricultural solutions" class="w-20 h-20 object-cover rounded-full mx-auto mb-4">
+                    <img src="Images/BSF_Production_Unit_at_The_Office_Compound .jpg"
+                        alt="Innovative agricultural solutions"
+                        class="w-20 h-20 object-cover rounded-full mx-auto mb-4">
                     <h3 class="text-xl font-semibold text-primary mb-4">Innovation</h3>
                     <p class="text-gray-600">
-                        Embracing creative solutions and technologies to address complex agricultural and environmental challenges.
+                        Embracing creative solutions and technologies to address complex agricultural and environmental
+                        challenges.
                     </p>
                 </div>
-                
+
                 <div class="text-center p-6 fade-in" style="transition-delay: 0.3s;">
-                    <img src="Images/Agri_Pro_Team_At_Office_Compound.jpg" alt="Community collaboration and teamwork" class="w-20 h-20 object-cover rounded-full mx-auto mb-4">
+                    <img src="Images/Agri_Pro_Team_At_Office_Compound.jpg" alt="Community collaboration and teamwork"
+                        class="w-20 h-20 object-cover rounded-full mx-auto mb-4">
                     <h3 class="text-xl font-semibold text-primary mb-4">Community</h3>
                     <p class="text-gray-600">
-                        Working collaboratively with local communities, respecting indigenous knowledge and fostering collective action.
+                        Working collaboratively with local communities, respecting indigenous knowledge and fostering
+                        collective action.
                     </p>
                 </div>
             </div>
@@ -296,30 +343,35 @@
                     Dedicated individuals driving our mission forward
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="bg-white rounded-2xl p-8 shadow-lg fade-in">
                     <div class="text-center">
-                        <div class="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+                        <div
+                            class="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white">
                             <i class="fas fa-user text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-primary mb-2">Mr. Ben Blasto Nyagol</h3>
                         <p class="text-secondary font-semibold mb-4">Chairman</p>
                         <p class="text-gray-600">
-                            Leading Agri-Pro Solutions with vision and dedication, bringing together youth from across Rachuonyo North to drive sustainable agricultural transformation and community development.
+                            Leading Agri-Pro Solutions with vision and dedication, bringing together youth from across
+                            Rachuonyo North to drive sustainable agricultural transformation and community development.
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="bg-white rounded-2xl p-8 shadow-lg fade-in" style="transition-delay: 0.2s;">
                     <div class="text-center">
-                        <div class="w-24 h-24 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+                        <div
+                            class="w-24 h-24 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white">
                             <i class="fas fa-user text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-primary mb-2">Elimu Wasonga Odhiambo</h3>
                         <p class="text-secondary font-semibold mb-4">Secretary</p>
                         <p class="text-gray-600 mb-4">
-                            "Our work proves that climate-smart, agro-ecological farming is not only viable—it's transformational. We are restoring the land, empowering our youth, and building a future where rural innovation drives prosperity."
+                            "Our work proves that climate-smart, agro-ecological farming is not only viable—it's
+                            transformational. We are restoring the land, empowering our youth, and building a future
+                            where rural innovation drives prosperity."
                         </p>
                     </div>
                 </div>
@@ -329,8 +381,10 @@
             <div class="mt-16 fade-in" style="transition-delay: 0.4s;">
                 <div class="bg-white rounded-2xl p-8 shadow-lg">
                     <h3 class="text-2xl font-bold text-primary mb-6 text-center">Our Dedicated Team</h3>
-                    <img src="Images/Agri_Pro_Team_At_Office_Compound.jpg" alt="Agri-Pro Solutions team members" class="w-full h-64 object-cover rounded-lg">
-                    <p class="text-gray-600 text-sm italic mt-4 text-center">The Agri-Pro Solutions team working together to transform agriculture in Rachuonyo North</p>
+                    <img src="Images/Agri_Pro_Team_At_Office_Compound.jpg" alt="Agri-Pro Solutions team members"
+                        class="w-full h-64 object-cover rounded-lg">
+                    <p class="text-gray-600 text-sm italic mt-4 text-center">The Agri-Pro Solutions team working
+                        together to transform agriculture in Rachuonyo North</p>
                 </div>
             </div>
         </div>
@@ -342,10 +396,11 @@
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Partnership Model</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    We don't work alone. Our success is built on leveraging the expertise and resources of diverse partners.
+                    We don't work alone. Our success is built on leveraging the expertise and resources of diverse
+                    partners.
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="fade-in">
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -374,21 +429,27 @@
                             <p class="text-sm text-gray-600">Mechanization Financing</p>
                         </div>
                     </div>
-                    
+
                     <div class="text-center mt-12 fade-in" style="transition-delay: 0.4s;">
                         <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-                            Through strategic collaborations with government agencies, international organizations, financial institutions, and community stakeholders, we amplify our impact and create sustainable change across Rachuonyo North.
+                            Through strategic collaborations with government agencies, international organizations,
+                            financial institutions, and community stakeholders, we amplify our impact and create
+                            sustainable change across Rachuonyo North.
                         </p>
-                        <a href="get-involved.html" class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 inline-block">
+                        <a href="get-involved.html"
+                            class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 inline-block">
                             Become a Partner
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="relative fade-in" style="transition-delay: 0.5s;">
                     <div class="bg-white rounded-2xl p-6 shadow-lg">
-                        <img src="Images/EU_Delegation_Visit_with_Mr_Tito_Arunga.jpg" alt="Partnership meeting with stakeholders" class="w-full h-64 object-cover rounded-lg mb-4">
-                        <p class="text-gray-600 text-sm italic">Collaborating with partners to scale our impact across Rachuonyo North</p>
+                        <img src="Images/EU_Delegation_Visit_with_Mr_Tito_Arunga.jpg"
+                            alt="Partnership meeting with stakeholders"
+                            class="w-full h-64 object-cover rounded-lg mb-4">
+                        <p class="text-gray-600 text-sm italic">Collaborating with partners to scale our impact across
+                            Rachuonyo North</p>
                     </div>
                     <div class="absolute -top-4 -right-4 w-8 h-8 bg-accent rounded-full floating"></div>
                 </div>
@@ -402,27 +463,33 @@
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Community Impact</h2>
                 <p class="text-xl text-light max-w-3xl mx-auto">
-                    Transforming lives and landscapes across Rachuonyo North
+                    Transforming lives and landscapes across Homabay County
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 fade-in">
-                    <img src="Images/On_Farm_Training_at_Demo_Plots.jpg" alt="Farmer training session" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="Images/On_Farm_Training_at_Demo_Plots.jpg" alt="Farmer training session"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold mb-3">Farmer Training</h3>
-                    <p class="text-light">Empowering 2,500+ farmers with sustainable agricultural practices and climate-resilient techniques.</p>
+                    <p class="text-light">Empowering 2,500+ farmers with sustainable agricultural practices and
+                        climate-resilient techniques.</p>
                 </div>
-                
+
                 <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 fade-in" style="transition-delay: 0.2s;">
-                    <img src="Images/Planting_Service_Kibiri_Ward.jpg" alt="Youth empowerment program" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="Images/Planting_Service_Kibiri_Ward.jpg" alt="Youth empowerment program"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold mb-3">Field Services</h3>
-                    <p class="text-light">Providing hands-on support and planting services to farmers across all seven wards.</p>
+                    <p class="text-light">Providing hands-on support and planting services to farmers across Homabay
+                        County.</p>
                 </div>
-                
+
                 <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 fade-in" style="transition-delay: 0.4s;">
-                    <img src="Images/Farmers_receiving_agro_forestry_in_Kendu_Town.jpg" alt="Environmental conservation efforts" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="Images/Farmers_receiving_agro_forestry_in_Kendu_Town.jpg"
+                        alt="Environmental conservation efforts" class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold mb-3">Environmental Care</h3>
-                    <p class="text-light">Distributing 30,000+ tree seedlings and promoting sustainable land management practices.</p>
+                    <p class="text-light">Distributing 30,000+ tree seedlings and promoting sustainable land management
+                        practices.</p>
                 </div>
             </div>
         </div>
@@ -434,13 +501,15 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
                     <div class="flex items-center mb-4">
-                        <div class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
+                        <div
+                            class="h-10 w-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
                             APS
                         </div>
                         <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
                     </div>
                     <p class="text-gray-300 mb-4">
-                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through agro-ecology, clean energy, and youth empowerment.
+                        Empowering Rural Regeneration & Climate Resilience in Homabay County, Kenya through
+                        agro-ecology, clean energy, and youth empowerment.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">
@@ -457,27 +526,35 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Our Work</h3>
                     <ul class="space-y-2">
-                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Agro-ecology</a></li>
-                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Clean Energy</a></li>
-                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Youth Empowerment</a></li>
-                        <li><a href="programs.html" class="text-gray-300 hover:text-accent transition-colors duration-300">Market Access</a></li>
+                        <li><a href="programs.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Agro-ecology</a>
+                        </li>
+                        <li><a href="programs.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Clean Energy</a>
+                        </li>
+                        <li><a href="programs.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Youth
+                                Empowerment</a></li>
+                        <li><a href="programs.html"
+                                class="text-gray-300 hover:text-accent transition-colors duration-300">Market Access</a>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
                     <ul class="space-y-2 text-gray-300">
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt mr-3 text-accent"></i>
-                            Rachuonyo North, Kenya
+                            Homabay County, Kenya
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone mr-3 text-accent"></i>
-                            +254 XXX XXX XXX
+                            +254 715 581924
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-accent"></i>
@@ -486,7 +563,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
                 <p>&copy; 2025 Agri-Pro Solutions Community Based Organization. All rights reserved.</p>
             </div>
@@ -495,34 +572,34 @@
 
     <script>
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
 
         // Initialize GSAP animations
         gsap.registerPlugin(ScrollTrigger);
-        
+
         // Fade in animation for elements with class 'fade-in'
         gsap.utils.toArray('.fade-in').forEach(element => {
-            gsap.fromTo(element, 
-                { opacity: 0, y: 50 },
-                { 
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 0.8, 
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    }
+            gsap.fromTo(element, {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
                 }
-            );
+            });
         });
 
         // Navbar background on scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
                 nav.classList.add('bg-white/95', 'backdrop-blur-md');
@@ -534,4 +611,5 @@
         });
     </script>
 </body>
+
 </html>

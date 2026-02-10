@@ -266,7 +266,7 @@
                 <span class="text-accent">Climate Resilience</span>
             </h1>
             <p class="text-xl md:text-2xl mb-8 text-light fade-in" style="transition-delay: 0.2s;">
-                Transforming smallholder agriculture in Rachuonyo North, Kenya through agroecology, clean energy, and
+                Transforming smallholder agriculture in Homabay County, Kenya through agroecology, clean energy, and
                 youth empowerment.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
@@ -303,15 +303,11 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Impact in Rachuonyo North</h2>
-                <p class="text-xl text-gray-600">Reaching all seven wards with sustainable solutions</p>
-            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Impact in Homabay County</h2>
+            <p class="text-xl text-gray-600">Reaching across 8 Sub-counties with sustainable solutions</p>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in">
-                    <div class="text-4xl font-bold text-primary mb-2 counter" data-target="2500">0</div>
-                    <div class="text-gray-600">Farmers Trained in Agro-ecology</div>
-                </div>
+                <div class="text-4xl font-bold text-primary mb-2 counter" data-target="3700">0</div>
+                <div class="text-gray-600">Farmers Trained in Agro-ecology</div>
                 <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in"
                     style="transition-delay: 0.1s;">
                     <div class="text-4xl font-bold text-primary mb-2 counter" data-target="30000">0</div>
@@ -322,11 +318,8 @@
                     <div class="text-4xl font-bold text-primary mb-2 counter" data-target="300">0</div>
                     <div class="text-gray-600">Youth Empowered</div>
                 </div>
-                <div class="impact-card glassmorphism text-center p-6 rounded-2xl shadow-lg fade-in"
-                    style="transition-delay: 0.3s;">
-                    <div class="text-4xl font-bold text-primary mb-2 counter" data-target="7">0</div>
-                    <div class="text-gray-600">Wards Reached</div>
-                </div>
+                <div class="text-4xl font-bold text-primary mb-2 counter" data-target="8">0</div>
+                <div class="text-gray-600">Sub-counties Reached</div>
             </div>
         </div>
     </section>
@@ -505,8 +498,8 @@
                 Join Our Movement for Rural Transformation
             </h2>
             <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
-                Together, we can scale our impact to reach 10,000+ farmers and create 1,000 youth-led agribusinesses
-                across Kenya.
+                Together, we can scale our impact to reach farmers and create youth-led agribusinesses across Homabay
+                County.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
                 <button
@@ -881,7 +874,7 @@
                         <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
                     </div>
                     <p class="text-gray-300 mb-4">
-                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through
+                        Empowering Rural Regeneration & Climate Resilience in Homabay County, Kenya through
                         agro-ecology, clean energy, and youth empowerment.
                     </p>
                     <div class="flex space-x-4">
@@ -924,7 +917,7 @@
                     <ul class="space-y-2 text-gray-300">
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt mr-3 text-accent"></i>
-                            Rachuonyo North, Kenya
+                            Homabay County, Kenya
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone mr-3 text-accent"></i>
@@ -991,20 +984,20 @@
 
         // Fade in animation for elements with class 'fade-in'
         gsap.utils.toArray('.fade-in').forEach(element => {
-            gsap.fromTo(element,
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    }
+            gsap.fromTo(element, {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
                 }
-            );
+            });
         });
 
         // Counter animation

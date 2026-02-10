@@ -193,7 +193,7 @@
                 <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in">Our Programs</h1>
                 <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
                     Integrated solutions addressing climate vulnerability, economic pressures, and social challenges in
-                    Rachuonyo North
+                    Homabay County
                 </p>
                 <div class="fade-in" style="transition-delay: 0.4s;">
                     <a href="#programs"
@@ -212,7 +212,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Integrated Approach</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     We address the interconnected challenges of climate change, food security, and youth unemployment
-                    through eight complementary programs
+                    across Homabay County through eight complementary programs
                 </p>
             </div>
 
@@ -272,8 +272,9 @@
                                         <ul class="text-gray-600 mt-2 space-y-2">
                                             <li>Trained <span class="font-semibold">40 Agro-ecological Service Providers
                                                     (ASPs)</span> as trainers of farmers</li>
-                                            <li><span class="font-semibold">2,500+ smallholder farmers</span> trained in
-                                                sustainable practices</li>
+                                            <li><span class="font-semibold">3,700 smallholder farmers</span> trained on
+                                                Agroecology sponsored by EU, IFAD, GOK with County Government and FAO as
+                                                key implementors</li>
                                             <li><span class="font-semibold">30,000+ tree seedlings</span> distributed
                                                 for soil health and income</li>
                                         </ul>
@@ -528,8 +529,8 @@
                                         class="w-full h-40 object-cover rounded-lg mb-2">
                                 </div>
                                 <div class="bg-white rounded-2xl p-4 shadow-lg">
-                                    <img src="Images/Kales_Demo_Plot.jpg"
-                                        alt="Kales Demo Plot" class="w-full h-40 object-cover rounded-lg mb-2">
+                                    <img src="Images/Kales_Demo_Plot.jpg" alt="Kales Demo Plot"
+                                        class="w-full h-40 object-cover rounded-lg mb-2">
                                 </div>
                                 <div class="bg-white rounded-2xl p-4 shadow-lg">
                                     <img src="Images/On_Farm_Training_at_Demo_Plots.jpg"
@@ -614,7 +615,7 @@
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Work in Action</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    See how we're transforming agriculture in Rachuonyo North through practical implementation
+                    See how we're transforming agriculture in Homabay County Kenya, through practical implementation
                 </p>
             </div>
 
@@ -628,15 +629,15 @@
                 </div>
 
                 <div class="bg-light rounded-xl p-6 shadow-md fade-in" style="transition-delay: 0.1s;">
-                    <img src="Images/Planting_Service_Kibiri_Ward.jpg"
-                        alt="Planting Service Kibiri Ward" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="Images/Planting_Service_Kibiri_Ward.jpg" alt="Planting Service Kibiri Ward"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-lg font-semibold text-primary mb-2">Field Services</h3>
                     <p class="text-gray-600 text-sm">Offering planting services to farmers in Kibiri Ward</p>
                 </div>
 
                 <div class="bg-light rounded-xl p-6 shadow-md fade-in" style="transition-delay: 0.2s;">
-                    <img src="Images/Agri_Pro_Team_At_Office_Compound.jpg"
-                        alt="The Agri-Pro Team at Office Compound" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="Images/Agri_Pro_Team_At_Office_Compound.jpg" alt="The Agri-Pro Team at Office Compound"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-lg font-semibold text-primary mb-2">Our Team</h3>
                     <p class="text-gray-600 text-sm">The dedicated Agri-Pro Solutions team</p>
                 </div>
@@ -658,8 +659,8 @@
                 Ready to Support Our Programs?
             </h2>
             <p class="text-xl text-light mb-8 fade-in" style="transition-delay: 0.2s;">
-                Join us in scaling our impact to reach 10,000+ farmers and create 1,000 youth-led agribusinesses across
-                Kenya.
+                Join us in scaling our impact to reach farmers and create youth-led agribusinesses across Homabay
+                County.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
                 <a href="get-involved.html"
@@ -687,7 +688,7 @@
                         <span class="ml-3 text-xl font-semibold">Agri-Pro Solutions CBO</span>
                     </div>
                     <p class="text-gray-300 mb-4">
-                        Empowering Rural Regeneration & Climate Resilience in Rachuonyo North, Kenya through
+                        Empowering Rural Regeneration & Climate Resilience in Homabay County, Kenya through
                         agro-ecology, clean energy, and youth empowerment.
                     </p>
                     <div class="flex space-x-4">
@@ -764,7 +765,8 @@
             button.addEventListener('click', function () {
                 // Remove active class from all buttons and contents
                 document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove(
+                    'active'));
 
                 // Add active class to clicked button
                 this.classList.add('active');
@@ -780,20 +782,20 @@
 
         // Fade in animation for elements with class 'fade-in'
         gsap.utils.toArray('.fade-in').forEach(element => {
-            gsap.fromTo(element,
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    }
+            gsap.fromTo(element, {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
                 }
-            );
+            });
         });
 
         // Navbar background on scroll
@@ -809,4 +811,5 @@
         });
     </script>
 </body>
+
 </html>
