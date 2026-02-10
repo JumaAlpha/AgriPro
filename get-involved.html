@@ -135,59 +135,138 @@
 
 <body class="font-sans bg-white">
     <!-- Navigation -->
-    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <!-- Logo Image with fallback -->
                         <div
-                            class="h-12 w-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
-                            APS
+                            class="h-20 w-20 bg-white rounded-full flex items-center justify-center text-white font-bold text-lg pulse-glow overflow-hidden">
+                            <img src="Images/logo.png" alt="Agri-Pro Solutions Logo" class="h-5/6 w-5/6 object-contain"
+                                onerror="this.style.display='none'; this.parentElement.innerHTML='APS';">
                         </div>
-                        <span class="ml-3 text-xl font-semibold text-primary">Agri-Pro Solutions CBO</span>
                     </a>
                 </div>
 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html"
-                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Home</a>
-                    <a href="about.html"
-                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">About</a>
-                    <a href="programs.html"
-                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Programs</a>
-                    <a href="impact.html"
-                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Impact</a>
-                    <a href="get-involved.html" class="text-primary font-medium">Get Involved</a>
-                    <a href="contact.html"
-                        class="text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
-                    <button
-                        class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link px-3 py-2 font-medium transition-colors duration-300"
+                        data-page="index">
+                        Home
+                    </a>
+                    <a href="about.html" class="nav-link px-3 py-2 font-medium transition-colors duration-300"
+                        data-page="about">
+                        About
+                    </a>
+                    <a href="programs.html" class="nav-link px-3 py-2 font-medium transition-colors duration-300"
+                        data-page="programs">
+                        Programs
+                    </a>
+                    <a href="impact.html" class="nav-link px-3 py-2 font-medium transition-colors duration-300"
+                        data-page="impact">
+                        Impact
+                    </a>
+                    <a href="gallery.html" class="nav-link px-3 py-2 font-medium transition-colors duration-300"
+                        data-page="gallery">
+                        Gallery
+                    </a>
+                    <a href="get-involved.html" class="nav-link px-3 py-2 font-medium transition-colors duration-300"
+                        data-page="get-involved">
+                        Get Involved
+                    </a>
+                    <a href="contact.html" class="nav-link px-3 py-2 font-medium transition-colors duration-300"
+                        data-page="contact">
+                        Contact
+                    </a>
+                    <a href="get-involved.html#partnership"
+                        class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-md ml-2">
                         Partner With Us
-                    </button>
+                    </a>
                 </div>
 
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-primary">
+                    <button id="mobile-menu-button"
+                        class="text-primary transition-transform duration-300 hover:scale-110">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t">
+        <div id="mobile-menu"
+            class="md:hidden hidden bg-white/95 backdrop-blur-md border-t transition-all duration-300">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Home</a>
-                <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-primary">About</a>
-                <a href="programs.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Programs</a>
-                <a href="impact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Impact</a>
-                <a href="get-involved.html" class="block px-3 py-2 text-primary font-medium">Get Involved</a>
-                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary">Contact</a>
-                <button class="w-full mt-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary">
+                <a href="index.html" class="mobile-nav-link block px-3 py-2 transition-colors duration-300"
+                    data-page="index">
+                    Home
+                </a>
+                <a href="about.html" class="mobile-nav-link block px-3 py-2 transition-colors duration-300"
+                    data-page="about">
+                    About
+                </a>
+                <a href="programs.html" class="mobile-nav-link block px-3 py-2 transition-colors duration-300"
+                    data-page="programs">
+                    Programs
+                </a>
+                <a href="impact.html" class="mobile-nav-link block px-3 py-2 transition-colors duration-300"
+                    data-page="impact">
+                    Impact
+                </a>
+                <a href="gallery.html" class="mobile-nav-link block px-3 py-2 transition-colors duration-300"
+                    data-page="gallery">
+                    Gallery
+                </a>
+                <a href="get-involved.html" class="mobile-nav-link block px-3 py-2 transition-colors duration-300"
+                    data-page="get-involved">
+                    Get Involved
+                </a>
+                <a href="contact.html" class="mobile-nav-link block px-3 py-2 transition-colors duration-300"
+                    data-page="contact">
+                    Contact
+                </a>
+                <a href="get-involved.html#partnership"
+                    class="block w-full mt-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-300 text-center">
                     Partner With Us
-                </button>
+                </a>
             </div>
         </div>
     </nav>
+    <script>
+        // Active page detection for navigation
+        function setActiveNavLink() {
+            // Get current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const pageName = currentPage.replace('.html', '') || 'index';
+
+            // Set active state for desktop navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const linkPage = link.getAttribute('data-page');
+                if (linkPage === pageName) {
+                    link.classList.remove('text-gray-600', 'hover:text-primary');
+                    link.classList.add('text-primary', 'font-semibold');
+                } else {
+                    link.classList.remove('text-primary', 'font-semibold');
+                    link.classList.add('text-gray-600', 'hover:text-primary');
+                }
+            });
+
+            // Set active state for mobile navigation
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                const linkPage = link.getAttribute('data-page');
+                if (linkPage === pageName) {
+                    link.classList.remove('text-gray-600', 'hover:text-primary');
+                    link.classList.add('text-primary', 'font-semibold');
+                } else {
+                    link.classList.remove('text-primary', 'font-semibold');
+                    link.classList.add('text-gray-600', 'hover:text-primary');
+                }
+            });
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', setActiveNavLink);
+    </script>
+
 
     <!-- Page Header -->
     <section class="page-hero py-20 text-white">
