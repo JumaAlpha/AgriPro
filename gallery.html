@@ -38,8 +38,8 @@
         }
 
         .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .filter-button.active {
@@ -84,6 +84,19 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-image {
+                height: 220px;
+            }
         }
     </style>
 </head>
@@ -244,34 +257,34 @@
                 <p class="text-gray-600">Filter images by category to see specific aspects of our programs</p>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-4 fade-in" style="transition-delay: 0.2s;">
+            <div class="flex flex-wrap justify-center gap-3 fade-in" style="transition-delay: 0.2s;">
                 <button
-                    class="filter-button active px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
+                    class="filter-button active px-4 py-2 md:px-6 md:py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
                     data-filter="all">
                     All Photos
                 </button>
                 <button
-                    class="filter-button px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
+                    class="filter-button px-4 py-2 md:px-6 md:py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
                     data-filter="team">
                     <i class="fas fa-users mr-2"></i>Our Team
                 </button>
                 <button
-                    class="filter-button px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
+                    class="filter-button px-4 py-2 md:px-6 md:py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
                     data-filter="training">
                     <i class="fas fa-graduation-cap mr-2"></i>Training
                 </button>
                 <button
-                    class="filter-button px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
+                    class="filter-button px-4 py-2 md:px-6 md:py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
                     data-filter="farming">
                     <i class="fas fa-tractor mr-2"></i>Farming
                 </button>
                 <button
-                    class="filter-button px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
+                    class="filter-button px-4 py-2 md:px-6 md:py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
                     data-filter="partnerships">
                     <i class="fas fa-handshake mr-2"></i>Partnerships
                 </button>
                 <button
-                    class="filter-button px-6 py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
+                    class="filter-button px-4 py-2 md:px-6 md:py-3 bg-white rounded-lg font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300"
                     data-filter="innovation">
                     <i class="fas fa-lightbulb mr-2"></i>Innovation
                 </button>
@@ -280,25 +293,16 @@
     </section>
 
     <!-- Gallery Grid -->
-    <section class="py-20 bg-white">
+    <section class="py-12 md:py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="gallery-grid">
 
                 <!-- Team Photos -->
                 <div class="gallery-item team" data-category="team">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/Agri_Pro_Team_At_Office_Compound.jpg" alt="Agri-Pro Team at Office Compound"
-                            class="w-full h-64 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-primary mb-2">Our Dedicated Team</h3>
-                            <p class="text-gray-600 text-sm">The Agri-Pro Solutions team working together at our office
-                                compound</p>
-                        </div>
-                    </div>
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
-                        <img src="Images/Signing.jpeg" alt="Agri-Pro Team at Office Compound"
-                            class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Our Dedicated Team</h3>
                             <p class="text-gray-600 text-sm">The Agri-Pro Solutions team working together at our office
                                 compound</p>
@@ -306,12 +310,36 @@
                     </div>
                 </div>
 
+                <div class="gallery-item team" data-category="team">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
+                        <img src="Images/Signing.jpeg" alt="Agreement signing with University of Eldoret"
+                            class="gallery-image">
+                        <div class="p-4 flex-grow">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Agreement Signing</h3>
+                            <p class="text-gray-600 text-sm">Meeting with the University of Eldoret vice chancellor led by
+                                Prof. Julius Ochuodho and Dr. George Aria together with the TAGDev 2.0 team</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item team" data-category="team">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
+                        <img src="Images/Signing2.jpeg" alt="Signing collaboration agreement"
+                            class="gallery-image">
+                        <div class="p-4 flex-grow">
+                            <h3 class="text-lg font-semibold text-primary mb-2">Partnership Agreement</h3>
+                            <p class="text-gray-600 text-sm">Signing collaboration agreement with the University of
+                                Eldoret led by Prof. Julius Ochuodho and Dr. George Aria with the TAGDev 2.0 team</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Training Photos -->
                 <div class="gallery-item training" data-category="training">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/On_Farm_Training_at_Demo_Plots.jpg" alt="On-Farm Training at Demo Plots"
-                            class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Hands-on Training</h3>
                             <p class="text-gray-600 text-sm">Farmers receiving practical training at our demonstration
                                 plots</p>
@@ -320,10 +348,10 @@
                 </div>
 
                 <div class="gallery-item training" data-category="training">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/Training_On_Money_Maker_Pumps_By_Kickstart International.jpg"
-                            alt="Training on Money Maker Pumps" class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            alt="Training on Money Maker Pumps" class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Irrigation Training</h3>
                             <p class="text-gray-600 text-sm">Farmers learning irrigation techniques with KickStart
                                 International</p>
@@ -333,10 +361,10 @@
 
                 <!-- Farming Photos -->
                 <div class="gallery-item farming" data-category="farming">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/Farmers_receiving_agro_forestry_in_Kendu_Town.jpg"
-                            alt="Farmers receiving agroforestry seedlings" class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            alt="Farmers receiving agroforestry seedlings" class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Agroforestry Distribution</h3>
                             <p class="text-gray-600 text-sm">Farmers receiving tree seedlings in Kendu Town ward</p>
                         </div>
@@ -344,10 +372,10 @@
                 </div>
 
                 <div class="gallery-item farming" data-category="farming">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/Water_melon_Demo_Plot.jpg" alt="Watermelon Demo Plot"
-                            class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Watermelon Demo Plot</h3>
                             <p class="text-gray-600 text-sm">High-value crop demonstration for farmers</p>
                         </div>
@@ -355,9 +383,9 @@
                 </div>
 
                 <div class="gallery-item farming" data-category="farming">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
-                        <img src="Images/Kales_Demo_Plot.jpg" alt="Kales Demo Plot" class="w-full h-64 object-cover">
-                        <div class="p-4">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
+                        <img src="Images/Kales_Demo_Plot.jpg" alt="Kales Demo Plot" class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Kales Demo Plot</h3>
                             <p class="text-gray-600 text-sm">Leafy vegetable production demonstration</p>
                         </div>
@@ -365,10 +393,10 @@
                 </div>
 
                 <div class="gallery-item farming" data-category="farming">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/Planting_Service_Kibiri_Ward.jpg" alt="Planting Service in Kibiri Ward"
-                            class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Field Services</h3>
                             <p class="text-gray-600 text-sm">Offering planting services to farmers in Kibiri Ward</p>
                         </div>
@@ -377,10 +405,10 @@
 
                 <!-- Partnerships Photos -->
                 <div class="gallery-item partnerships" data-category="partnerships">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/EU_Delegation_Visit_with_Mr_Tito_Arunga.jpg" alt="EU Delegation Visit"
-                            class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Partnership Engagement</h3>
                             <p class="text-gray-600 text-sm">Meeting with EU delegation and Mr. Tito Arunga</p>
                         </div>
@@ -389,10 +417,10 @@
 
                 <!-- Innovation Photos -->
                 <div class="gallery-item innovation" data-category="innovation">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/BSF_Production_Unit_at_The_Office_Compound .jpg" alt="BSF Production Unit"
-                            class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Waste to Wealth Innovation</h3>
                             <p class="text-gray-600 text-sm">Black Soldier Fly production unit at our office compound
                             </p>
@@ -401,10 +429,10 @@
                 </div>
 
                 <div class="gallery-item innovation" data-category="innovation">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/Tilapia_Fish_Pond_Kendu_bay.jpg" alt="Tilapia Fish Pond"
-                            class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Aquaculture Innovation</h3>
                             <p class="text-gray-600 text-sm">Tilapia fish pond at Kendu Bay showground</p>
                         </div>
@@ -412,10 +440,10 @@
                 </div>
 
                 <div class="gallery-item innovation" data-category="innovation">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/Cat_fish_pond_kendu_bay.jpg" alt="Cat Fish Pond"
-                            class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Sustainable Aquaculture</h3>
                             <p class="text-gray-600 text-sm">Cat fish pond at Kendu Bay showground</p>
                         </div>
@@ -423,10 +451,10 @@
                 </div>
 
                 <div class="gallery-item farming" data-category="farming">
-                    <div class="bg-light rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-light rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                         <img src="Images/Dr_Martha_Planting_Tree_At_Office_Compond.jpg"
-                            alt="Tree Planting at Office Compound" class="w-full h-64 object-cover">
-                        <div class="p-4">
+                            alt="Tree Planting at Office Compound" class="gallery-image">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-lg font-semibold text-primary mb-2">Environmental Conservation</h3>
                             <p class="text-gray-600 text-sm">Tree planting activity at our office compound</p>
                         </div>
@@ -438,7 +466,7 @@
             <!-- Load More Button -->
             <div class="text-center mt-12 fade-in" style="transition-delay: 0.4s;">
                 <button id="load-more"
-                    class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                    class="bg-primary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
                     Load More Photos
                 </button>
             </div>
@@ -446,52 +474,52 @@
     </section>
 
     <!-- Impact Stats Section -->
-    <section class="py-20 bg-primary text-white">
+    <section class="py-16 md:py-20 bg-primary text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Impact in Numbers</h2>
-                <p class="text-xl text-light max-w-3xl mx-auto">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Our Impact in Numbers</h2>
+                <p class="text-base md:text-xl text-light max-w-3xl mx-auto">
                     The stories behind the images - measurable impact across Homabay County
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
                 <div class="text-center fade-in">
-                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">2,500+</div>
-                    <div class="text-light">Farmers Trained</div>
+                    <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-accent mb-2">2,500+</div>
+                    <div class="text-light text-sm md:text-base">Farmers Trained</div>
                 </div>
                 <div class="text-center fade-in" style="transition-delay: 0.1s;">
-                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">300+</div>
-                    <div class="text-light">Youth Empowered</div>
+                    <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-accent mb-2">300+</div>
+                    <div class="text-light text-sm md:text-base">Youth Empowered</div>
                 </div>
                 <div class="text-center fade-in" style="transition-delay: 0.2s;">
-                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">30,000+</div>
-                    <div class="text-light">Tree Seedlings</div>
+                    <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-accent mb-2">30,000+</div>
+                    <div class="text-light text-sm md:text-base">Tree Seedlings</div>
                 </div>
                 <div class="text-center fade-in" style="transition-delay: 0.3s;">
-                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2">Homabay County</div>
-                    <div class="text-light">Coverage Across 8 Sub-counties</div>
+                    <div class="text-xl md:text-2xl lg:text-3xl font-bold text-accent mb-2">Homabay County</div>
+                    <div class="text-light text-sm md:text-base">Coverage Across 8 Sub-counties</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-light">
+    <section class="py-16 md:py-20 bg-light">
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6 fade-in">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4 md:mb-6 fade-in">
                 Inspired by Our Work?
             </h2>
-            <p class="text-xl text-gray-600 mb-8 fade-in" style="transition-delay: 0.2s;">
+            <p class="text-base md:text-xl text-gray-600 mb-6 md:mb-8 fade-in" style="transition-delay: 0.2s;">
                 Join us in creating more success stories and transforming rural communities across Kenya.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
+            <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
                 <a href="get-involved.html"
-                    class="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
+                    class="bg-primary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105">
                     Get Involved
                 </a>
                 <a href="contact.html"
-                    class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105">
+                    class="border-2 border-primary text-primary px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105">
                     Contact Us
                 </a>
             </div>
@@ -502,7 +530,7 @@
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
-        <div id="modalCaption" class="text-white text-center mt-4 text-lg"></div>
+        <div id="modalCaption" class="text-white text-center mt-4 text-base md:text-lg px-4"></div>
     </div>
 
     <!-- Footer -->
@@ -613,7 +641,7 @@
         const captionText = document.getElementById('modalCaption');
         const closeBtn = document.querySelector('.close');
 
-        document.querySelectorAll('.gallery-item img').forEach(img => {
+        document.querySelectorAll('.gallery-image').forEach(img => {
             img.addEventListener('click', function () {
                 modal.style.display = 'block';
                 modalImg.src = this.src;
